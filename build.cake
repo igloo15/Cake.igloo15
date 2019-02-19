@@ -1,57 +1,34 @@
-#tool "nuget:?package=GitVersion.CommandLine"
-#addin nuget:?package=Cake.Git
+
 #addin "Cake.Incubator"
 
-#l "./src/Scripts/SetupAndTeardownActions.cake"
+#l "./src/Scripts/Standard/Standard.cake"
+#l "./src/Scripts/CSharp/CSharp.cake"
 
-var target = Argument<string>("target", "Default");
+var target = ArgumentOrEnvironmentVariable<string>("target", "Default");
 
-GitVersion result;
 DotNetCoreMSBuildSettings MSBuildSettings;
 string SolutionLocation = "./src/Addins/Cake.igloo15.Addins.sln";
 string PackagesLocation = "./packages.local";
 
-Setup((c) =>
-{
+AddSetup((c, d) => {
+    d["MyItems"] = "Stuff";
 });
 
-Teardown((c) =>
-{
-    // Executed AFTER the last task.
-    Information("Finished running tasks.");
+AddTeardown((c, d) => {
+    Information("Finished All Tasks");
 });
 
-Task("Update-Version")
-	.Does(() => {
 
-		Information("Calculating Semantic Version...");
+Task("Update-Settings-With-Version")
+    .IsDependentOn("Standard-ProjectData-Dump")
+    .IsDependentOn("Standard-Update-Version")
+    .IsDependentOn("CSharp-NetCore-Setup")
+	.Does<ProjectData>((data) => {
 
-        var fullBranchName = "refs/"+GitDescribe(".", false, GitDescribeStrategy.All);
-
-		Environment.SetEnvironmentVariable("Git_Branch", fullBranchName, EnvironmentVariableTarget.Process);
-        		
-		result = GitVersion(new GitVersionSettings {
-					UpdateAssemblyInfo = true,
-					OutputType = GitVersionOutput.Json,
-                    Branch = fullBranchName,
-					NoFetch = true
-				});
-
-		var cakeVersion = typeof(ICakeContext).Assembly.GetName().Version.ToString();
+        Information($"Updating MSBuild with Version {data.Version.LegacySemVerPadded}");
 
         if(AppVeyor.IsRunningOnAppVeyor)
-			AppVeyor.UpdateBuildVersion(result.LegacySemVerPadded);
-
-        MSBuildSettings = new DotNetCoreMSBuildSettings()
-                            .WithProperty("Version", result.LegacySemVerPadded)
-                            .WithProperty("AssemblyVersion", result.MajorMinorPatch)
-                            .WithProperty("FileVersion",  result.MajorMinorPatch)
-                            .WithProperty("AssemblyInformationalVersion", result.InformationalVersion);
-
-		Information($"Cake Version : {cakeVersion}");
-        Information("");
-        Information("GitVersion:");
-        Information(result.Dump());
+			AppVeyor.UpdateBuildVersion(data.Version.LegacySemVerPadded);
 	});
 
 Task("Clean-Packages-Local")
@@ -59,40 +36,12 @@ Task("Clean-Packages-Local")
         CleanDirectories(PackagesLocation);
     });
 
-Task("Restore")
-    .Does(() => {
-        DotNetCoreRestore(SolutionLocation);
-    });
-
-Task("Build")
-    .IsDependentOn("Restore")
-    .IsDependentOn("Update-Version")
-	.Does(() => {
-        DotNetCoreBuild(SolutionLocation, new DotNetCoreBuildSettings {
-            Configuration = "Release",
-            MSBuildSettings = MSBuildSettings
-        });
-    });
-
-Task("Publish")
-    .IsDependentOn("Build")
-    .Does(() => {
-        DotNetCorePublish(SolutionLocation, new DotNetCorePublishSettings {
-            Configuration = "Release",
-            MSBuildSettings = MSBuildSettings
-        });
-    });
-
 Task("Pack")
     .IsDependentOn("Clean-Packages-Local")
-    .IsDependentOn("Publish")
+    .IsDependentOn("Update-Settings-With-Version")
+    .IsDependentOn("CSharp-NetCore-Pack-All")
     .Does(() => {
-        DotNetCorePack(SolutionLocation, new DotNetCorePackSettings {
-            NoBuild = true,
-            Configuration = "Release",
-            OutputDirectory = PackagesLocation,
-            MSBuildSettings = MSBuildSettings
-        });
+        
     });
 
 Task("Push")
@@ -115,7 +64,7 @@ Task("Push")
     
 
 Task("Default")
-    .IsDependentOn("Build");
+    .IsDependentOn("Pack");
 
 Task("Deploy")
 	.IsDependentOn("Push");

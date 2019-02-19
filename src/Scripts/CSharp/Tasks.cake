@@ -1,0 +1,59 @@
+
+Task("CSharp-NetCore-Setup")
+    .IsDependentOn("Standard-Update-Version")
+    .Does<ProjectData>(data => {
+
+        var buildSettings = new DotNetCoreMSBuildSettings()
+                            .WithProperty("Version", data.Version.LegacySemVerPadded)
+                            .WithProperty("AssemblyVersion", data.Version.MajorMinorPatch)
+                            .WithProperty("FileVersion",  data.Version.MajorMinorPatch)
+                            .WithProperty("AssemblyInformationalVersion", data.Version.InformationalVersion);
+
+        data.GenericProperties["MSBuildSettings"] = buildSettings;
+    });
+
+Task("CSharp-NetCore-Build-All")
+    .IsDependentOn("CSharp-NetCore-Setup")
+    .Does<ProjectData>(data => {
+        var buildSettings = data.GetGenericProperty<DotNetCoreMSBuildSettings>("MSBuildSettings");
+        var solutionFiles = GetFiles(System.IO.Path.Combine(data["SrcFolder"], "**","*.sln"));
+        foreach(var solution in solutionFiles)
+        {
+            DotNetCoreBuild(solution.FullPath, new DotNetCoreBuildSettings {
+                Configuration = "Release",
+                MSBuildSettings = MSBuildSettings
+            });
+        }
+    });
+
+Task("CSharp-NetCore-Publish-All")
+    .IsDependentOn("CSharp-NetCore-Setup")
+    .Does<ProjectData>(data => {
+        var buildSettings = data.GetGenericProperty<DotNetCoreMSBuildSettings>("MSBuildSettings");
+        var solutionFiles = GetFiles(System.IO.Path.Combine(data["SrcFolder"], "**","*.sln"));
+        foreach(var solution in solutionFiles)
+        {
+            DotNetCorePublish(solution.FullPath, new DotNetCorePublishSettings {
+                Configuration = "Release",
+                MSBuildSettings = MSBuildSettings
+            });
+        }
+        
+    });
+
+Task("CSharp-NetCore-Pack-All")
+    .IsDependentOn("CSharp-NetCore-Publish-All")
+    .Does<ProjectData>(data => {
+        var buildSettings = data.GetGenericProperty<DotNetCoreMSBuildSettings>("MSBuildSettings");
+        var solutionFiles = GetFiles(System.IO.Path.Combine(data["SrcFolder"], "**","*.sln"));
+        foreach(var solution in solutionFiles)
+        {
+            DotNetCorePack(SolutionLocation, new DotNetCorePackSettings {
+                NoBuild = true,
+                Configuration = "Release",
+                OutputDirectory = data["PackagesLocal"],
+                MSBuildSettings = buildSettings
+            });
+        }
+    });
+

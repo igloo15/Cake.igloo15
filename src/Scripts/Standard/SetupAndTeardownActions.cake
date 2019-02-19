@@ -26,10 +26,11 @@ public void AddTaskTeardown(Action<ITaskTeardownContext, ProjectData> cakeAction
 }
 
 Setup<ProjectData>((c) => {
-    var newBuildData = new ProjectData(c);
-    _setupAction?.Invoke(c, newBuildData);
-
-    return newBuildData;
+    GlobalProjectData.Context = c;
+    _setupAction?.Invoke(c, GlobalProjectData);
+    
+    Information("Finished setting up ProjectData");
+    return GlobalProjectData;
 });
 
 Teardown<ProjectData>((c, data) => {
