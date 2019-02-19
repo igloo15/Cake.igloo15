@@ -4,4 +4,22 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+    <BaseOutputPath>$(MSBuildProjectFullPath)\..\..\..\..\dist\$(MSBuildProjectName)</BaseOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>$(Version)</PackageVersion>
+    <PackageId>Cake.igloo15.MarkdownApiGenerator</PackageId>
+    <Authors>igloo15</Authors>
+    <Description></Description>
+    <PackageTags></PackageTags>
+    <PackageProjectUrl>https://github.com/igloo15/Cake.igloo15</PackageProjectUrl>
+    <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
 </Project>
