@@ -1,3 +1,5 @@
+#addin "nuget:?package=Cake.igloo15.Helper&version=0.2.0-dev0004"
+
 #l ProjectData.cake
 
 Action<ISetupContext, ProjectData> _setupAction = null;

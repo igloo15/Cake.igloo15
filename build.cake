@@ -1,7 +1,7 @@
 
 #addin "Cake.Incubator"
-//#r "./dist/Cake.igloo15.MarkdownApi/Debug/netstandard2.0/Cake.igloo15.MarkdownApi.dll"
-//#r "./dist/Cake.igloo15.Helper/Debug/netstandard2.0/Cake.igloo15.Helper.dll"
+
+#addin "nuget:?package=Cake.igloo15.MarkdownApi&version=0.2.0-dev0004"
 
 #l "./src/Scripts/Standard/Standard.cake"
 #l "./src/Scripts/CSharp/CSharp.cake"
