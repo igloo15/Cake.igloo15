@@ -1,1 +1,0 @@
-ProjectData GlobalProjectData = new ProjectData();

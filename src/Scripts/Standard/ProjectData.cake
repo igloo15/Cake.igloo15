@@ -1,12 +1,31 @@
+using System.Collections.Generic;
+
 public class ProjectData
 {
-    private Dictionary<string, string> _internalData = new Dictionary<string, string>();
+    private Dictionary<string, object> _internalData = new Dictionary<string, object>();
+    private Dictionary<string, object> _privateData = new Dictionary<string, object>();
+    private Dictionary<string, object> _arguments = new Dictionary<string, object>();
 
-    public string this[string index]
+    public object this[string index]
     {
         get
         {
-            return _internalData[index];
+            if(_internalData.ContainsKey(index))
+            {
+                return _internalData[index];
+            }
+
+            if(_privateData.ContainsKey(index))
+            {
+                return _privateData[index];
+            }
+
+            if(_arguments.ContainsKey(index))
+            {
+                return _arguments[index];
+            }
+
+            throw new Exception($"Could not find Key {index}");
         }
 
         set
@@ -15,24 +34,24 @@ public class ProjectData
         }
     }
 
-    public Dictionary<string, string> PrivateProperties { get; } = new Dictionary<string, string>();
-
-    public Dictionary<string, object> GenericProperties { get; } = new Dictionary<string, object>();
-
-    public Dictionary<string, object> Arguments { get; } = new Dictionary<string, object>();
-
-    public ICakeContext Context { get; set; }
+    public ICakeContext Context { get; }
 
     public GitVersion Version { get; set; } = null;
 
-    public T GetGenericProperty<T>(string key)
+    public ProjectData(ICakeContext context, Dictionary<string, object> arguments = null)
     {
-        return (T)GenericProperties[key];
+        Context = context;
+        _arguments = arguments ?? new Dictionary<string, object>();
+    }
+
+    public T GetProperty<T>(string key)
+    {
+        return (T)this[key];
     }
 
     public T GetArgument<T>(string key)
     {
-        return (T)Arguments[key];
+        return (T)_arguments[key];
     }
 
     public override string ToString()
@@ -45,15 +64,9 @@ public class ProjectData
         {
             sb.AppendLine($"{kvp.Key.PadRight(40)}{kvp.Value}");
         }
-
-        sb.AppendLine("\nGENERIC PROPERTIES:\n");
-        foreach(var kvp in GenericProperties)
-        {
-            sb.AppendLine($"{kvp.Key.PadRight(40)}{kvp.Value.ToString()}");
-        }
         
         sb.AppendLine("\nARGUMENTS:\n");
-        foreach(var kvp in Arguments)
+        foreach(var kvp in _arguments)
         {
             sb.AppendLine($"{kvp.Key.PadRight(40)}{kvp.Value.ToString()}");
         }

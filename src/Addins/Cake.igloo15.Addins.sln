@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.igloo15.MarkdownApiGenerator", "Cake.igloo15.MarkdownApiGenerator\Cake.igloo15.MarkdownApiGenerator.csproj", "{409E8AD3-A5B4-4231-81DE-A412EBDB239E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.igloo15.MarkdownApiGenerator", "Cake.igloo15.MarkdownApiGenerator\Cake.igloo15.MarkdownApi.csproj", "{409E8AD3-A5B4-4231-81DE-A412EBDB239E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.igloo15.Helper", "Cake.igloo15.Helper\Cake.igloo15.Helper.csproj", "{5321595D-3F7A-481B-8B91-948E05B887CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,5 +32,17 @@ Global
 		{409E8AD3-A5B4-4231-81DE-A412EBDB239E}.Release|x64.Build.0 = Release|Any CPU
 		{409E8AD3-A5B4-4231-81DE-A412EBDB239E}.Release|x86.ActiveCfg = Release|Any CPU
 		{409E8AD3-A5B4-4231-81DE-A412EBDB239E}.Release|x86.Build.0 = Release|Any CPU
+		{5321595D-3F7A-481B-8B91-948E05B887CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5321595D-3F7A-481B-8B91-948E05B887CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5321595D-3F7A-481B-8B91-948E05B887CF}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5321595D-3F7A-481B-8B91-948E05B887CF}.Debug|x64.Build.0 = Debug|Any CPU
+		{5321595D-3F7A-481B-8B91-948E05B887CF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5321595D-3F7A-481B-8B91-948E05B887CF}.Debug|x86.Build.0 = Debug|Any CPU
+		{5321595D-3F7A-481B-8B91-948E05B887CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5321595D-3F7A-481B-8B91-948E05B887CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5321595D-3F7A-481B-8B91-948E05B887CF}.Release|x64.ActiveCfg = Release|Any CPU
+		{5321595D-3F7A-481B-8B91-948E05B887CF}.Release|x64.Build.0 = Release|Any CPU
+		{5321595D-3F7A-481B-8B91-948E05B887CF}.Release|x86.ActiveCfg = Release|Any CPU
+		{5321595D-3F7A-481B-8B91-948E05B887CF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
