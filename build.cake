@@ -1,12 +1,12 @@
 
 #addin "Cake.Incubator"
-#r "./dist/Cake.igloo15.MarkdownApi/Debug/netstandard2.0/Cake.igloo15.MarkdownApi.dll"
-#r "./dist/Cake.igloo15.Helper/Debug/netstandard2.0/Cake.igloo15.Helper.dll"
+//#r "./dist/Cake.igloo15.MarkdownApi/Debug/netstandard2.0/Cake.igloo15.MarkdownApi.dll"
+//#r "./dist/Cake.igloo15.Helper/Debug/netstandard2.0/Cake.igloo15.Helper.dll"
 
 #l "./src/Scripts/Standard/Standard.cake"
 #l "./src/Scripts/CSharp/CSharp.cake"
 
-var target = ArgumentOrEnvironmentVariable<string>("target", "Default");
+var target = Argument<string>("target", "Default");
 
 DotNetCoreMSBuildSettings MSBuildSettings;
 string SolutionLocation = "./src/Addins/Cake.igloo15.Addins.sln";
@@ -31,8 +31,7 @@ Task("Update-Settings-With-Version")
 
         if(AppVeyor.IsRunningOnAppVeyor)
 			AppVeyor.UpdateBuildVersion(data.Version.LegacySemVerPadded);
-	})
-    .QuickError();
+	});
 
 Task("Clean-Packages-Local")
     .Does(() => {
@@ -59,8 +58,7 @@ Task("Push")
             });
             Information($"Succesfully Pushed Package {nupkgFile}");
         }
-    })
-    .QuickError();
+    });
 
     
 

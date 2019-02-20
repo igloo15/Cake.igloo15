@@ -26,10 +26,10 @@ public void AddTaskTeardown(Action<ITaskTeardownContext, ProjectData> cakeAction
 }
 
 Setup<ProjectData>((c) => {
-    AddErrorListener((task, error) => {
-        Error($"{task} : {error.Message}");
-    });
-    var projectData = new ProjectData(c, GlobalArguments);
+    // AddErrorListener((task, error) => {
+    //     Error($"{task} : {error.Message}");
+    // });
+    var projectData = new ProjectData(c, null);
     
     _setupAction?.Invoke(c, projectData);
     
