@@ -47,6 +47,11 @@ Task("Copy-Folder")
         CopyDirectory(Directory(data["SrcFolder"].ToString()) + Directory("Scripts"), Directory(data["DistFolder"].ToString()) + Directory("Scripts"));
     });
 
+Task("DownVersion")
+    .Does(() => {
+        ReplaceKey("0.2.0-dev0006", "0.2.0-dev0005", "./dist/Scripts/**/*.cake");
+    });
+
 Task("Clean-Packages-Local")
     .Does(() => {
         CleanDirectories(PackagesLocation);
