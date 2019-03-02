@@ -19,11 +19,12 @@ namespace Cake.igloo15.Helper
         /// <param name="context">The Cake Context</param>
         /// <param name="name">The name of the argument or environment variable</param>
         /// <param name="defaultValue">The default value</param>
+        /// <param name="addToGlobal">If set to false it will not add argument to global arguments</param>
         /// <param name="prefix">Optional prefix on the environment variable</param>
         /// <typeparam name="T">The type of value expected</typeparam>
         /// <returns>The Value</returns>
         [CakeMethodAlias]
-        public static T ArgumentOrEnvironmentVariable<T> (this ICakeContext context, string name, T defaultValue, string prefix = null)
+        public static T ArgumentOrEnvironmentVariable<T> (this ICakeContext context, string name, T defaultValue, bool addToGlobal = true, string prefix = null)
         {
             var environmentVariableName = prefix != null ? $"{prefix}{name}" : name;
 
@@ -33,8 +34,9 @@ namespace Cake.igloo15.Helper
             T newDefaultValue = string.IsNullOrEmpty(envValue) ? defaultValue : Convert<T>(envValue);
 
             var value =  argValue == null ? newDefaultValue : Convert<T>(argValue);
-
-            _globalArguments[name] = value;
+            
+            if(addToGlobal)
+                _globalArguments[name] = value;
 
             return value;
         }

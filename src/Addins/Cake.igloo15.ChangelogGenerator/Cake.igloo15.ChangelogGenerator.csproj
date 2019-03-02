@@ -13,7 +13,7 @@
     <PackageId>$(MSBuildProjectName)</PackageId>
     <Authors>igloo15</Authors>
     <Description/>
-    <PackageTags>Cake Build Addins Helpers Extensions</PackageTags>
+    <PackageTags>Cake Build Addins Changelog Extensions</PackageTags>
     <PackageProjectUrl>https://github.com/igloo15/Cake.igloo15</PackageProjectUrl>
     <PackageIconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
     <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>
@@ -21,6 +21,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Cake.Core" Version="0.32.1" PrivateAssets="All"/>
-    <PackageReference Include="Cake.Common" Version="0.32.1" PrivateAssets="All"/>
+    <PackageReference Include="igloo15.ChangelogGenerator.Core" Version="0.2.0-dev0010"/>
   </ItemGroup>
 </Project>

@@ -44,5 +44,18 @@ namespace Cake.igloo15.MarkdownApi
                 outputPath
             );
         }
+
+        /// <summary>
+        /// Generate Markdown Api using default themes but with specificed options
+        /// </summary>
+        /// <param name="context">The Cake Context</param>
+        /// <param name="searchPath">The search path for dll and xml files</param>
+        /// <param name="outputPath">The path to put the api documentation</param>
+        /// <param name="options">The default options for default theme</param>
+        [CakeMethodAlias]
+        public static void GenerateMarkdownApi(this ICakeContext context, string searchPath, string outputPath, DefaultOptions options)
+        {
+            context.GenerateMarkdownApi(searchPath, outputPath, new DefaultTheme(options));
+        }
     }
 }

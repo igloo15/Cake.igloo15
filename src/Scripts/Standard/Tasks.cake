@@ -1,23 +1,15 @@
 #tool "nuget:?package=GitVersion.CommandLine&version=4.0.0"
-
+#addin "Cake.Incubator&version=3.1.0"
 #addin "nuget:?package=Cake.Git&version=0.19.0"
 
-Task("Standard-Default-Properties")
-    .Does<ProjectData>(data => {
-        data["SrcFolder"] = "./src";
-        data["PackagesLocal"] = "./packages.local";
-        data["DistFolder"] = "./dist";
-        data["DocsFolder"] = "./docs";
-    });
+#l Arguments.cake
 
 Task("Standard-ProjectData-Dump")
-    .IsDependentOn("Standard-Default-Properties")
     .Does<ProjectData>(data => {
         Information(data.ToString());
     });
 
 Task("Standard-Update-Version")
-    .IsDependentOn("Standard-Default-Properties")
     .Does<ProjectData>(data => {
         Information("Calculating Semantic Version...");
 
