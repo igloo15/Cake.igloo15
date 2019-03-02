@@ -21,7 +21,7 @@ Task("CSharp-NetCore-Build-All")
         {
             DotNetCoreBuild(solution.FullPath, new DotNetCoreBuildSettings {
                 Configuration = "Release",
-                MSBuildSettings = MSBuildSettings
+                MSBuildSettings = buildSettings
             });
         }
     });
@@ -35,7 +35,7 @@ Task("CSharp-NetCore-Publish-All")
         {
             DotNetCorePublish(solution.FullPath, new DotNetCorePublishSettings {
                 Configuration = "Release",
-                MSBuildSettings = MSBuildSettings
+                MSBuildSettings = buildSettings
             });
         }
         

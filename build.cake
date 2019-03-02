@@ -2,13 +2,9 @@ using System;
 
 #addin "Cake.Incubator&version=3.1.0"
 
-#addin "nuget:?package=Cake.igloo15.MarkdownApi&version=0.2.0-dev0005&loaddependencies=true"
-
-#r "./dist/Cake.igloo15.Helper/Debug/netstandard2.0/Cake.igloo15.Helper.dll"
-
-#l "./dist/Scripts/Standard/Standard.cake"
-#l "./dist/Scripts/CSharp/CSharp.cake"
-#l "./dist/Scripts/NuGet/NuGet.cake"
+#l "nuget:?package=Cake.igloo15.Scripts.Standard&version=0.2.0-dev0006"
+#l "nuget:?package=Cake.igloo15.Scripts.CSharp&version=0.2.0-dev0006"
+#l "nuget:?package=Cake.igloo15.Scripts.NuGet&version=0.2.0-dev0006"
 
 var target = Argument<string>("target", "Default");
 

@@ -9,7 +9,6 @@ Task("NuGet-Setup")
             fileSystemInfo => 
             {
                 var result = !fileSystemInfo.Path.FullPath.Contains("node_modules") && !fileSystemInfo.Path.FullPath.Contains("obj");
-                Information($"{fileSystemInfo.Path.FullPath} : {result}");
                 return result;
             };
 
