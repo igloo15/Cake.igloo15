@@ -2,13 +2,12 @@ using System;
 
 #addin "Cake.Incubator&version=3.1.0"
 
-#l "nuget:?package=Cake.igloo15.Scripts.Standard&version=0.2.0-dev0006"
-#l "nuget:?package=Cake.igloo15.Scripts.CSharp&version=0.2.0-dev0006"
-#l "nuget:?package=Cake.igloo15.Scripts.NuGet&version=0.2.0-dev0006"
+#l "nuget:?package=Cake.igloo15.Scripts.Standard&version=0.2.0-dev0008"
+#l "nuget:?package=Cake.igloo15.Scripts.CSharp&version=0.2.0-dev0008"
+#l "nuget:?package=Cake.igloo15.Scripts.NuGet&version=0.2.0-dev0008"
 
 var target = Argument<string>("target", "Default");
 
-DotNetCoreMSBuildSettings MSBuildSettings;
 string SolutionLocation = "./src/Addins/Cake.igloo15.Addins.sln";
 string PackagesLocation = "./packages.local";
 

@@ -48,7 +48,7 @@ Task("CSharp-NetCore-Pack-All")
         var solutionFiles = GetFiles(System.IO.Path.Combine(data["SrcFolder"].ToString(), "**","*.sln"));
         foreach(var solution in solutionFiles)
         {
-            DotNetCorePack(SolutionLocation, new DotNetCorePackSettings {
+            DotNetCorePack(solution.FullPath, new DotNetCorePackSettings {
                 NoBuild = true,
                 Configuration = "Release",
                 OutputDirectory = data["PackagesLocal"].ToString(),
