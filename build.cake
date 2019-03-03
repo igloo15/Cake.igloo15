@@ -1,6 +1,6 @@
 #addin "Cake.Incubator&version=3.1.0"
 
-#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0012"
+#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0015"
 
 
 var target = Argument<string>("target", "Default");
@@ -36,7 +36,9 @@ Task("Update-Settings-With-Version")
 
 Task("Copy-Folder")
     .Does<ProjectData>((data) => {
-        CopyDirectory(Directory(data["SrcFolder"].ToString()) + Directory("Scripts"), Directory(data["DistFolder"].ToString()) + Directory("Scripts"));
+        var srcFolder = CombinePaths(data.GetString("SrcFolder"), "Scripts");
+        var distFolder = CombinePaths(data.GetString("DistFolder"), "Scripts");
+        CopyDirectory(srcFolder, distFolder);
     });
 
 Task("Clean-Packages-Local")
@@ -49,7 +51,7 @@ Task("Pack")
     .IsDependentOn("Update-Settings-With-Version")
     .IsDependentOn("CSharp-NetCore-Pack-All")
     .IsDependentOn("NuGet-Package")
-    //.IsDependentOn("Changelog-Generate")
+    .IsDependentOn("Changelog-Generate")
     .Does(() => {
         
     });
@@ -58,15 +60,7 @@ Task("Push")
     .IsDependentOn("Pack")
     .IsDependentOn("NuGet-Push")
     .Does(() => {
-        // foreach(var nupkgFile in GetFiles(PackagesLocation+"/*.nupkg"))
-        // {
-        //     Information($"Pushing Package {nupkgFile}");
-        //     NuGetPush(nupkgFile, new NuGetPushSettings {
-        //         Source = "https://api.nuget.org/v3/index.json",
-		// 		ApiKey = EnvironmentVariable("apikey") 
-        //     });
-        //     Information($"Succesfully Pushed Package {nupkgFile}");
-        // }
+        
     });
 
     

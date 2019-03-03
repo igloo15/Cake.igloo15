@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.igloo15.Helper", "Cake
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.igloo15.ChangelogGenerator", "Cake.igloo15.ChangelogGenerator\Cake.igloo15.ChangelogGenerator.csproj", "{6E97C612-FC2D-43BF-9173-EA0863D252DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cake.igloo15.MarkdownDocument", "Cake.igloo15.MarkdownDocument\Cake.igloo15.MarkdownDocument.csproj", "{F7446D15-F961-4A16-96E9-367B57C11FEE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,5 +60,17 @@ Global
 		{6E97C612-FC2D-43BF-9173-EA0863D252DF}.Release|x64.Build.0 = Release|Any CPU
 		{6E97C612-FC2D-43BF-9173-EA0863D252DF}.Release|x86.ActiveCfg = Release|Any CPU
 		{6E97C612-FC2D-43BF-9173-EA0863D252DF}.Release|x86.Build.0 = Release|Any CPU
+		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Debug|x64.Build.0 = Debug|Any CPU
+		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Debug|x86.Build.0 = Debug|Any CPU
+		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Release|x64.ActiveCfg = Release|Any CPU
+		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Release|x64.Build.0 = Release|Any CPU
+		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Release|x86.ActiveCfg = Release|Any CPU
+		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

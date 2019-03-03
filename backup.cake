@@ -1,12 +1,14 @@
 #addin "Cake.Incubator&version=3.1.0"
+#addin "nuget:?package=Cake.igloo15.Helper&version=0.2.0-dev0011"
 
-#r "./dist/Cake.igloo15.Helper/Debug/netstandard2.0/Cake.igloo15.Helper.dll"
+#l "nuget:?package=Cake.igloo15.Scripts.Changelog&version=0.2.0-dev0012"
+#l "./dist/Scripts/Standard/Standard.cake"
 
 var target = Argument<string>("target", "Default");
 
 Task("Copy-Folder")
-    .Does<ProjectData>((data) => {
-        CopyDirectory(Directory(data["SrcFolder"].ToString()) + Directory("Scripts"), Directory(data["DistFolder"].ToString()) + Directory("Scripts"));
+    .Does((data) => {
+        //CopyDirectory(Directory(data["SrcFolder"].ToString()) + Directory("Scripts"), Directory(data["DistFolder"].ToString()) + Directory("Scripts"));
     });
 
 Task("DownVersion")
@@ -16,6 +18,10 @@ Task("DownVersion")
    
 
 Task("Default")
-    .IsDependentOn("Copy-Folder");
+    .IsDependentOn("Standard-Update-Version")
+    .IsDependentOn("Changelog-CreateConfig")
+    .Does(() => {
+        Information("It Built");
+    });
 
 RunTarget(target);
