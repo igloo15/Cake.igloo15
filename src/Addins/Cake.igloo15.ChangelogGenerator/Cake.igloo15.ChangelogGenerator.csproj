@@ -21,6 +21,20 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Cake.Core" Version="0.32.1" PrivateAssets="All"/>
-    <PackageReference Include="igloo15.ChangelogGenerator.Core" Version="0.2.0-dev0012"/>
+    <PackageReference Include="igloo15.ChangelogGenerator.Core" Version="0.2.0-dev0012" PrivateAssets="All"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(OutputPath)\publish\*.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </Content>
+    <Content Include="$(OutputPath)\publish\runtimes\win-x64\native\*.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </Content>
+    <Content Include="$(OutputPath)\publish\runtimes\linux-x64\native\*.so">
+      <Pack>true</Pack>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </Content>
   </ItemGroup>
 </Project>
