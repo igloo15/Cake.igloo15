@@ -7,9 +7,19 @@ using Cake.Core.Diagnostics;
 
 namespace Cake.igloo15.Helper
 {
+    /// <summary>
+    /// Extension for replacing key values in files
+    /// </summary>
     public static class ReplaceKeyExtensions
     {
         
+        /// <summary>
+        /// This method will search for files in the given searchPath and replace any key found with the given new value
+        /// </summary>
+        /// <param name="context">The Cake Context</param>
+        /// <param name="key">The key to be replaced</param>
+        /// <param name="newValue">The new value to replace key with</param>
+        /// <param name="searchPath">The search path may include globbing wildcards</param>
         [CakeMethodAlias]
         public static void ReplaceKey(this ICakeContext context, string key, string newValue, string searchPath)
         {

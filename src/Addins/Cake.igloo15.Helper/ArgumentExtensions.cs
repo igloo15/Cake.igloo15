@@ -41,6 +41,11 @@ namespace Cake.igloo15.Helper
             return value;
         }
 
+        /// <summary>
+        /// Global Arguments properties this property contains all the arguments defined using ArgumentOrEnvironmentVariable
+        /// </summary>
+        /// <param name="context">The Cake Context</param>
+        /// <returns></returns>
         [CakePropertyAlias]
         public static Dictionary<string, object> GlobalArguments(this ICakeContext context)
         {

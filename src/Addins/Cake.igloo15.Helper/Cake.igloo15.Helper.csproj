@@ -12,7 +12,7 @@
     <PackageVersion>$(Version)</PackageVersion>
     <PackageId>$(MSBuildProjectName)</PackageId>
     <Authors>igloo15</Authors>
-    <Description/>
+    <Description>An addin for cake scripts that provides a number of helper functions and classes</Description>
     <PackageTags>Cake Build Addins Helpers Extensions</PackageTags>
     <PackageProjectUrl>https://github.com/igloo15/Cake.igloo15</PackageProjectUrl>
     <PackageIconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
