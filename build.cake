@@ -1,3 +1,4 @@
+using System.IO;
 using System;
 
 #addin "Cake.Incubator&version=3.1.0"
@@ -49,7 +50,10 @@ Task("DownVersion")
 
 Task("Clean-Packages-Local")
     .Does(() => {
-        CleanDirectories(PackagesLocation);
+        if(DirectoryExists(PackagesLocation))
+            CleanDirectories(PackagesLocation);
+        else
+            CreateDirectory(PackagesLocation);
     });
 
 Task("Pack")
