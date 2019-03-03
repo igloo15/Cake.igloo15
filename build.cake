@@ -1,6 +1,3 @@
-using System.IO;
-using System;
-
 #addin "Cake.Incubator&version=3.1.0"
 
 #l "nuget:?package=Cake.igloo15.Scripts.Standard&version=0.2.0-dev0008"

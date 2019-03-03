@@ -1,6 +1,5 @@
 #tool "nuget:?package=GitVersion.CommandLine&version=4.0.0"
 #addin "Cake.Incubator&version=3.1.0"
-#addin "nuget:?package=Cake.Git&version=0.19.0"
 
 #l Arguments.cake
 
@@ -12,15 +11,10 @@ Task("Standard-ProjectData-Dump")
 Task("Standard-Update-Version")
     .Does<ProjectData>(data => {
         Information("Calculating Semantic Version...");
-
-        var fullBranchName = "refs/"+GitDescribe(".", false, GitDescribeStrategy.All);
-
-		Environment.SetEnvironmentVariable("Git_Branch", fullBranchName, EnvironmentVariableTarget.Process);
         		
 		var result = GitVersion(new GitVersionSettings {
 					UpdateAssemblyInfo = true,
 					OutputType = GitVersionOutput.Json,
-                    Branch = fullBranchName,
 					NoFetch = true
 				});
 
