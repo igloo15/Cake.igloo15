@@ -20,7 +20,8 @@ Task("NuGet-Setup")
             data.SetPrivateProperty("NuGetApiKey", nugetApiKey);
 
         data["NuGetGlobSettings"] = settings;
-    });
+    })
+    .QuickError();
 
 Task("NuGet-Package")
     .IsDependentOn("NuGet-Setup")
@@ -36,7 +37,8 @@ Task("NuGet-Package")
                 OutputDirectory = data.GetString("PackagesLocal")
             });
         }
-    });
+    })
+    .QuickError();
 
 
 Task("NuGet-Push")

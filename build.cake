@@ -1,8 +1,7 @@
 #addin "Cake.Incubator&version=3.1.0"
 
-#l "nuget:?package=Cake.igloo15.Scripts.Standard&version=0.2.0-dev0008"
-#l "nuget:?package=Cake.igloo15.Scripts.CSharp&version=0.2.0-dev0008"
-#l "nuget:?package=Cake.igloo15.Scripts.NuGet&version=0.2.0-dev0008"
+#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0012"
+
 
 var target = Argument<string>("target", "Default");
 
@@ -40,25 +39,17 @@ Task("Copy-Folder")
         CopyDirectory(Directory(data["SrcFolder"].ToString()) + Directory("Scripts"), Directory(data["DistFolder"].ToString()) + Directory("Scripts"));
     });
 
-Task("DownVersion")
-    .Does(() => {
-        ReplaceKey("0.2.0-dev0006", "0.2.0-dev0005", "./dist/Scripts/**/*.cake");
-    });
-
 Task("Clean-Packages-Local")
     .Does(() => {
-        if(DirectoryExists(PackagesLocation))
-            CleanDirectories(PackagesLocation);
-        else
-            CreateDirectory(PackagesLocation);
+        CleanCreateDirectory(PackagesLocation);
     });
 
 Task("Pack")
     .IsDependentOn("Clean-Packages-Local")
     .IsDependentOn("Update-Settings-With-Version")
-    
     .IsDependentOn("CSharp-NetCore-Pack-All")
     .IsDependentOn("NuGet-Package")
+    //.IsDependentOn("Changelog-Generate")
     .Does(() => {
         
     });

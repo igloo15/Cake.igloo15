@@ -6,7 +6,8 @@
 Task("Standard-ProjectData-Dump")
     .Does<ProjectData>(data => {
         Information(data.ToString());
-    });
+    })
+    .QuickError();
 
 Task("Standard-Update-Version")
     .Does<ProjectData>(data => {
@@ -26,4 +27,5 @@ Task("Standard-Update-Version")
         Information(result.Dump());
 
         data.Version = result;
-    });
+    })
+    .QuickError();

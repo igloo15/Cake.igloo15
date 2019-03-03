@@ -1,9 +1,10 @@
 #addin "nuget:?package=Cake.igloo15.Helper&version=###VERSION###"
 
 Setup<ProjectData>((c) => {
-    // AddErrorListener((task, error) => {
-    //     Error($"{task} : {error.Message}");
-    // });
+    AddErrorListener((task, error) => {
+        Error($"{task} : {error.Message}");
+        Error($"{error.StackTrace}");
+    });
     var projectData = new ProjectData(c, GlobalArguments);
     
     InvokeSetup(projectData);
