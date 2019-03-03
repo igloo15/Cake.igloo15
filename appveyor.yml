@@ -1,4 +1,9 @@
 image: Visual Studio 2017
 
+branch:
+  only:
+    - master
+    - develop
+
 build_script:
 - ps: .\build.ps1 -Target Deploy
