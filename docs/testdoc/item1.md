@@ -1,3 +1,4 @@
+<!--id:stuff-->
 # Test
 
 ## Help
@@ -7,3 +8,5 @@
 Billy
 
 [Header](item2.md#when-test3)
+
+<!--next:item2.md-->
