@@ -51,7 +51,7 @@ Task("Pack")
     .IsDependentOn("Update-Settings-With-Version")
     .IsDependentOn("CSharp-NetCore-Pack-All")
     .IsDependentOn("NuGet-Package")
-    .IsDependentOn("Changelog-Generate")
+    //.IsDependentOn("Changelog-Generate")
     .Does(() => {
         
     });
