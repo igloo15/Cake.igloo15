@@ -39,5 +39,6 @@ namespace Cake.igloo15.Helper
 
             context.CleanDirectory(dir.Path);
         }
+        
     }
 }

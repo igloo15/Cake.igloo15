@@ -29,3 +29,37 @@ Task("Standard-Update-Version")
         data.Version = result;
     })
     .QuickError();
+
+Task("Standard-Package-Local")
+    .Does<ProjectData>(data => {
+        CleanCreateDirectory(ProjectData["PackagesLocal"]);
+    })
+    .QuickError();
+
+Task("Standard-Src-Folder")
+    .Does<ProjectData>(data => {
+        CreateDirectory(ProjectData["SrcFolder"]);
+    })
+    .QuickError();
+
+Task("Standard-Dist-Folder")
+    .Does<ProjectData>(data => {
+        CleanCreateDirectory(ProjectData["DistFolder"]);
+    })
+    .QuickError();
+
+Task("Standard-Docs-Folder")
+    .Does<ProjectData>(data => {
+        CreateDirectory(ProjectData["DocsFolder"]);
+    })
+    .QuickError();
+
+Task("Standard-Folders")
+    .IsDependentOn("Standard-Docs-Folder")
+    .IsDependentOn("Standard-Dist-Folder")
+    .IsDependentOn("Standard-Src-Folder")
+    .IsDependentOn("Standard-Packages-Local")
+    .Does<ProjectData>(data => {
+
+    })
+    .QuickError();

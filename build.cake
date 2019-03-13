@@ -1,6 +1,6 @@
 #addin "Cake.Incubator&version=3.1.0"
 
-#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0015"
+#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0023"
 
 
 var target = Argument<string>("target", "Default");
@@ -51,7 +51,7 @@ Task("Pack")
     .IsDependentOn("Update-Settings-With-Version")
     .IsDependentOn("CSharp-NetCore-Pack-All")
     .IsDependentOn("NuGet-Package")
-    //.IsDependentOn("Changelog-Generate")
+    .IsDependentOn("Changelog-Generate")
     .Does(() => {
         
     });
