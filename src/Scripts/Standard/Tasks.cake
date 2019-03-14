@@ -30,7 +30,7 @@ Task("Standard-Update-Version")
     })
     .QuickError();
 
-Task("Standard-Package-Local")
+Task("Standard-Packages-Local")
     .Does<ProjectData>(data => {
         CleanCreateDirectory(data.GetString("PackagesLocal"));
     })
