@@ -32,25 +32,25 @@ Task("Standard-Update-Version")
 
 Task("Standard-Package-Local")
     .Does<ProjectData>(data => {
-        CleanCreateDirectory(ProjectData.GetString("PackagesLocal"));
+        CleanCreateDirectory(data.GetString("PackagesLocal"));
     })
     .QuickError();
 
 Task("Standard-Src-Folder")
     .Does<ProjectData>(data => {
-        CreateDirectory(ProjectDat.GetString("SrcFolder"));
+        CreateDirectory(data.GetString("SrcFolder"));
     })
     .QuickError();
 
 Task("Standard-Dist-Folder")
     .Does<ProjectData>(data => {
-        CleanCreateDirectory(ProjectData.GetString("DistFolder"));
+        CleanCreateDirectory(data.GetString("DistFolder"));
     })
     .QuickError();
 
 Task("Standard-Docs-Folder")
     .Does<ProjectData>(data => {
-        CreateDirectory(ProjectData.GetString("DocsFolder"));
+        CreateDirectory(data.GetString("DocsFolder"));
     })
     .QuickError();
 
