@@ -15,11 +15,11 @@ namespace Cake.igloo15.MarkdownDocument
         /// </summary>
         /// <param name="context">The Cake Context</param>
         /// <param name="entryFile">The entry file</param>
-        /// <param name="newFile">The file to output to</param>
+        /// <param name="newMergeFile">The file to output to</param>
         [CakeMethodAlias]
-        public static void GenerateMarkdownDocument(this ICakeContext context, string entryFile, string newFile)
+        public static void MergeMarkdownDocuments(this ICakeContext context, string entryFile, string newMergeFile)
         {
-            new MarkdownMerger(entryFile).Process(newFile);
+            new MarkdownMerger(entryFile).Process(newMergeFile);
         }
 
     }
