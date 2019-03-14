@@ -69,5 +69,5 @@ Task("Standard-All")
     .IsDependentOn("Standard-Folders")
     .IsDependentOn("Standard-ProjectData-Dump")
     .IsDependentOn("Standard-Update-Version")
-    .Does()
+    .Does(() => {})
     .QuickError();
