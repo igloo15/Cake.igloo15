@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Cake.Core;
 using Cake.Core.Annotations;
 
@@ -48,6 +49,16 @@ namespace Cake.igloo15.MarkdownDocument
         public static string LinkId(this string text)
         {
             return text.Replace(" ", "-").Replace(".", "-").ToLower();
+        }
+
+        public static string FindIdentifier(this Dictionary<string, MarkdownPage> pages, string fileName)
+        {
+            if(pages.ContainsKey(fileName))
+            {
+                return pages[fileName].GetIdentifier();
+            }
+
+            return null;
         }
 
     }

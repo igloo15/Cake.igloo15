@@ -23,4 +23,10 @@
     <PackageReference Include="Cake.Core" Version="0.32.1" PrivateAssets="All"/>
     <PackageReference Include="igloo15.MarkdownApi.Core" Version="0.4.1"/>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(OutputPath)\publish\*.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </Content>
+  </ItemGroup>
 </Project>

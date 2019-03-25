@@ -13,7 +13,6 @@ namespace Cake.igloo15.MarkdownDocument
         public string FilePath { get; private set; }
         public List<string> NextPages { get; private set; } = new List<string>();
         public List<string> MarkdownLinks { get; private set; } = new List<string>();
-
         public List<MarkdownHeader> MarkdownHeaders { get; private set; } = new List<MarkdownHeader>();
 
         public string GetIdentifier()
@@ -34,24 +33,34 @@ namespace Cake.igloo15.MarkdownDocument
 
             foreach(var link in MarkdownLinks)
             {                
-                var items = link.Split('#');
-                if(items.Length < 2)
-                    continue;
+                var newLink = ProcessLink(link, pages);
 
-                var pageIdentifier = "";
-                if(!String.IsNullOrEmpty(items[0]))
-                {
-                    var fileName = Path.GetFileName(items[0]);
-                    if(pages.ContainsKey(fileName))
-                    {
-                        pageIdentifier = pages[fileName].GetIdentifier();
-                    }
-                }
-
-                content = content.Replace(link, $"#{pageIdentifier}-{items[1]}");
+                if(!String.IsNullOrEmpty(newLink))
+                    content = content.Replace(link, newLink);
             }
 
             return content;
+        }
+
+
+
+        private string ProcessLink(string link, Dictionary<string, MarkdownPage> pages)
+        {
+            var items = link.Split('#');
+            if(items.Length < 2)
+                return null;
+
+            var pageIdentifier = "";
+            if(!String.IsNullOrEmpty(items[0]))
+            {
+                var fileName = Path.GetFileName(items[0]);
+                pageIdentifier = pages.FindIdentifier(fileName);
+            }
+
+            if(pageIdentifier == null)
+                    return null;
+
+            return $"#{pageIdentifier}-{items[1]}";
         }
 
 
@@ -71,6 +80,13 @@ namespace Cake.igloo15.MarkdownDocument
             var lines = File.ReadAllLines(path);
             foreach(var line in lines)
             {
+                ProcessLine(line, page);
+            }
+            return page;
+        }
+
+        private static void ProcessLine(string line, MarkdownPage page)
+        {
                 var result = Utility.ParseLine(line);
                 if(result.Type != null)
                 {
@@ -90,8 +106,6 @@ namespace Cake.igloo15.MarkdownDocument
                             break;
                     }
                 }
-            }
-            return page;
         }
 
     }

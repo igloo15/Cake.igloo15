@@ -1,6 +1,6 @@
 #addin "Cake.Incubator&version=3.1.0"
 
-#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0023"
+#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0028"
 
 
 var target = Argument<string>("target", "Default");
@@ -19,10 +19,8 @@ AddTeardown((d) => {
 
 
 Task("Update-Settings-With-Version")
-    .IsDependentOn("Standard-ProjectData-Dump")
+    .IsDependentOn("Standard-All")
     .IsDependentOn("Copy-Folder")
-    .IsDependentOn("Standard-Update-Version")
-    .IsDependentOn("CSharp-NetCore-Setup")
 	.Does<ProjectData>((data) => {
 
         Information($"Updating MSBuild with Version {data.Version.LegacySemVerPadded}");
@@ -41,13 +39,7 @@ Task("Copy-Folder")
         CopyDirectory(srcFolder, distFolder);
     });
 
-Task("Clean-Packages-Local")
-    .Does(() => {
-        CleanCreateDirectory(PackagesLocation);
-    });
-
 Task("Pack")
-    .IsDependentOn("Clean-Packages-Local")
     .IsDependentOn("Update-Settings-With-Version")
     .IsDependentOn("CSharp-NetCore-Pack-All")
     .IsDependentOn("NuGet-Package")
