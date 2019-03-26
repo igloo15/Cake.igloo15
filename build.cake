@@ -1,6 +1,6 @@
 #addin "Cake.Incubator&version=3.1.0"
 
-#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0028"
+#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0023"
 
 
 var target = Argument<string>("target", "Default");
@@ -19,7 +19,8 @@ AddTeardown((d) => {
 
 
 Task("Update-Settings-With-Version")
-    .IsDependentOn("Standard-All")
+    .IsDependentOn("Standard-ProjectData-Dump")
+    .IsDependentOn("Standard-Update-Version")
     .IsDependentOn("Copy-Folder")
 	.Does<ProjectData>((data) => {
 
