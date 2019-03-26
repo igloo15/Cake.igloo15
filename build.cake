@@ -17,10 +17,15 @@ AddTeardown((d) => {
     Information("Finished All Tasks");
 });
 
+Task("CreatePackagesLocal")
+    .Does<ProjectData>(data => {
+        CleanCreateDirectory(data.GetString("PackagesLocal"));
+    });
 
 Task("Update-Settings-With-Version")
     .IsDependentOn("Standard-ProjectData-Dump")
     .IsDependentOn("Standard-Update-Version")
+    .IsDependentOn("CreatePackagesLocal")
     .IsDependentOn("Copy-Folder")
 	.Does<ProjectData>((data) => {
 
