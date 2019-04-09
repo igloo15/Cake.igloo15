@@ -1,6 +1,6 @@
 #addin "Cake.Incubator&version=3.1.0"
 
-#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0023"
+#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0033"
 
 
 var target = Argument<string>("target", "Default");
@@ -17,15 +17,8 @@ AddTeardown((d) => {
     Information("Finished All Tasks");
 });
 
-Task("CreatePackagesLocal")
-    .Does<ProjectData>(data => {
-        CleanCreateDirectory(data.GetString("PackagesLocal"));
-    });
-
 Task("Update-Settings-With-Version")
-    .IsDependentOn("Standard-ProjectData-Dump")
-    .IsDependentOn("Standard-Update-Version")
-    .IsDependentOn("CreatePackagesLocal")
+    .IsDependentOn("Standard-All")
     .IsDependentOn("Copy-Folder")
 	.Does<ProjectData>((data) => {
 
