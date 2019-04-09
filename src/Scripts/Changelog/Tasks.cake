@@ -1,6 +1,7 @@
 
 
 Task("Changelog-Generate")
+    .IsDependentOn("Changelog-CreateConfig")
     .Does(() => {
         GenerateChangelog();
     })
@@ -8,6 +9,9 @@ Task("Changelog-Generate")
 
 Task("Changelog-CreateConfig")
     .Does(() => {
-        CreateChangelogConfig();
+        if(!FileExists("./changelog.json")) 
+        {
+            CreateChangelogConfig();
+        }
     })
     .QuickError();
