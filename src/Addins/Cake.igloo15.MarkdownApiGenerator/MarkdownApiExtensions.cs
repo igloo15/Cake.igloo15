@@ -8,6 +8,7 @@ using Igloo15.MarkdownApi.Core;
 using Igloo15.MarkdownApi.Core.Interfaces;
 using Igloo15.MarkdownApi.Core.Themes;
 using Igloo15.MarkdownApi.Core.Themes.Default;
+using Microsoft.Extensions.Logging;
 
 namespace Cake.igloo15.MarkdownApi
 {
@@ -26,7 +27,9 @@ namespace Cake.igloo15.MarkdownApi
         [CakeMethodAlias]
         public static void GenerateMarkdownApi(this ICakeContext context, string searchPath, string outputPath, ITheme theme = null)
         {
-            var project = MarkdownApiGenerator.GenerateProject(searchPath, "", null);
+            var factory = new LoggerFactory().AddConsole();
+            
+            var project = MarkdownApiGenerator.GenerateProject(searchPath, "", factory);
             theme = theme ?? new DefaultTheme(new DefaultOptions{
                 BuildNamespacePages = true,
                 BuildTypePages = true,
