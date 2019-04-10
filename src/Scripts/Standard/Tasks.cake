@@ -7,7 +7,7 @@ Task("Standard-ProjectData-Dump")
     .Does<ProjectData>(data => {
         Information(data.ToString());
     })
-    .QuickError();
+    .CompleteTask();
 
 Task("Standard-Update-Version")
     .Does<ProjectData>(data => {
@@ -28,46 +28,42 @@ Task("Standard-Update-Version")
 
         data.Version = result;
     })
-    .QuickError();
+    .CompleteTask();
 
 Task("Standard-Packages-Local")
     .Does<ProjectData>(data => {
         CleanCreateDirectory(data.GetString("PackagesLocal"));
     })
-    .QuickError();
+    .CompleteTask();
 
 Task("Standard-Src-Folder")
     .Does<ProjectData>(data => {
         CreateDirectory(data.GetString("SrcFolder"));
     })
-    .QuickError();
+    .CompleteTask();
 
 Task("Standard-Dist-Folder")
     .Does<ProjectData>(data => {
         CleanCreateDirectory(data.GetString("DistFolder"));
     })
-    .QuickError();
+    .CompleteTask();
 
 Task("Standard-Docs-Folder")
     .Does<ProjectData>(data => {
         CreateDirectory(data.GetString("DocsFolder"));
     })
-    .QuickError();
+    .CompleteTask();
 
 Task("Standard-Folders")
     .IsDependentOn("Standard-Docs-Folder")
     .IsDependentOn("Standard-Dist-Folder")
     .IsDependentOn("Standard-Src-Folder")
     .IsDependentOn("Standard-Packages-Local")
-    .Does<ProjectData>(data => {
-
-    })
-    .QuickError();
+    .CompleteTask();
 
 
 Task("Standard-All")
     .IsDependentOn("Standard-Folders")
     .IsDependentOn("Standard-ProjectData-Dump")
     .IsDependentOn("Standard-Update-Version")
-    .Does(() => {})
-    .QuickError();
+    .CompleteTask();

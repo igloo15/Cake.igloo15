@@ -61,6 +61,11 @@ namespace Cake.igloo15.Helper
         public GitVersion Version { get; set; }
 
         /// <summary>
+        /// The current task
+        /// </summary>
+        public ICakeTaskInfo CurrentTask { get; set; }
+
+        /// <summary>
         /// The Project Data Constructor
         /// </summary>
         /// <param name="context">The cake context</param>
@@ -69,6 +74,7 @@ namespace Cake.igloo15.Helper
         {
             Context = context;
             _arguments = arguments ?? new Dictionary<string, object>();
+            
         }
 
         /// <summary>

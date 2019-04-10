@@ -11,7 +11,7 @@ Task("CSharp-NetCore-Setup")
 
         data["MSBuildSettings"] = buildSettings;
     })
-    .QuickError();
+    .CompleteTask();
 
 Task("CSharp-NetCore-Build-All")
     .IsDependentOn("CSharp-NetCore-Setup")
@@ -26,7 +26,7 @@ Task("CSharp-NetCore-Build-All")
             });
         }
     })
-    .QuickError();
+    .CompleteTask();
 
 Task("CSharp-NetCore-Publish-All")
     .IsDependentOn("CSharp-NetCore-Setup")
@@ -42,7 +42,7 @@ Task("CSharp-NetCore-Publish-All")
         }
         
     })
-    .QuickError();
+    .CompleteTask();
 
 Task("CSharp-NetCore-Pack-All")
     .IsDependentOn("CSharp-NetCore-Publish-All")
@@ -59,5 +59,5 @@ Task("CSharp-NetCore-Pack-All")
             });
         }
     })
-    .QuickError();
+    .CompleteTask();
 

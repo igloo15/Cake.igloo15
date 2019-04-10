@@ -21,7 +21,7 @@ Task("NuGet-Setup")
 
         data["NuGetGlobSettings"] = settings;
     })
-    .QuickError();
+    .CompleteTask();
 
 Task("NuGet-Package")
     .IsDependentOn("NuGet-Setup")
@@ -38,7 +38,7 @@ Task("NuGet-Package")
             });
         }
     })
-    .QuickError();
+    .CompleteTask();
 
 
 Task("NuGet-Push")
@@ -56,4 +56,5 @@ Task("NuGet-Push")
                 Source = data["NuGetSource"].ToString()
             });
         }
-    });
+    })
+    .CompleteTask();

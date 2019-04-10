@@ -5,7 +5,7 @@ Task("Changelog-Generate")
     .Does(() => {
         GenerateChangelog();
     })
-    .QuickError();
+    .CompleteTask();
 
 Task("Changelog-CreateConfig")
     .Does(() => {
@@ -14,4 +14,4 @@ Task("Changelog-CreateConfig")
             CreateChangelogConfig();
         }
     })
-    .QuickError();
+    .CompleteTask();

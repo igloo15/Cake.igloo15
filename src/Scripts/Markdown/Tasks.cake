@@ -5,11 +5,11 @@ Task("Markdown-Generate-Api")
     .Does(() => {
         GenerateMarkdownApi();
     })
-    .QuickError();
+    .CompleteTask();
 
 
 Task("Markdown-Generate")
     .Does(() => {
         GenerateMarkdownApi();
     })
-    .QuickError();
+    .CompleteTask();
