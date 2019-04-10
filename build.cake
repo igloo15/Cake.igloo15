@@ -1,6 +1,8 @@
 #addin "Cake.Incubator&version=3.1.0"
+#addin "nuget:?package=Cake.igloo15.MarkdownApi&version=0.2.0-dev0039"
 
-#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0033"
+#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0039"
+
 
 
 var target = Argument<string>("target", "Default");
@@ -29,37 +31,44 @@ Task("Update-Settings-With-Version")
 
         ReplaceKey("###VERSION###", data.Version.LegacySemVerPadded, "./dist/Scripts/**/*.cake");
 	})
-    .QuickError();
+    .CompleteTask();
 
 Task("Copy-Folder")
     .Does<ProjectData>((data) => {
         var srcFolder = CombinePaths(data.GetString("SrcFolder"), "Scripts");
         var distFolder = CombinePaths(data.GetString("DistFolder"), "Scripts");
         CopyDirectory(srcFolder, distFolder);
-    });
+    })
+    .CompleteTask();
 
 Task("Pack")
     .IsDependentOn("Update-Settings-With-Version")
     .IsDependentOn("CSharp-NetCore-Pack-All")
     .IsDependentOn("NuGet-Package")
     .IsDependentOn("Changelog-Generate")
-    .Does(() => {
-        
-    });
+    .Does<ProjectData>((data) => {
+        var searchPath = "";
+        searchPath += CombinePaths(data.GetString("DistFolder"), "Cake.igloo15.ChangelogGenerator", "Release", "netstandard2.0")+"/*.dll;";
+        searchPath += CombinePaths(data.GetString("DistFolder"), "Cake.igloo15.Helper", "Release", "netstandard2.0")+"/*.dll;";
+        searchPath += CombinePaths(data.GetString("DistFolder"), "Cake.igloo15.MarkdownApi", "Release", "netstandard2.0")+"/*.dll;";
+        searchPath += CombinePaths(data.GetString("DistFolder"), "Cake.igloo15.MarkdownDocument", "Release", "netstandard2.0")+"/*.dll";
+        GenerateMarkdownApi(searchPath, "./docs/api");
+    })
+    .CompleteTask();
 
 Task("Push")
     .IsDependentOn("Pack")
     .IsDependentOn("NuGet-Push")
-    .Does(() => {
-        
-    });
+    .CompleteTask();
 
     
 
 Task("Default")
-    .IsDependentOn("Pack");
+    .IsDependentOn("Pack")
+    .CompleteTask();
 
 Task("Deploy")
-	.IsDependentOn("Push");
+	.IsDependentOn("Push")
+    .CompleteTask();
 
 RunTarget(target);
