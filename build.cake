@@ -1,7 +1,6 @@
 #addin "Cake.Incubator&version=3.1.0"
-#addin "nuget:?package=Cake.igloo15.MarkdownApi&version=0.2.0-dev0039"
 
-#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0039"
+#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=0.2.0-dev0047"
 
 
 
@@ -46,14 +45,7 @@ Task("Pack")
     .IsDependentOn("CSharp-NetCore-Pack-All")
     .IsDependentOn("NuGet-Package")
     .IsDependentOn("Changelog-Generate")
-    .Does<ProjectData>((data) => {
-        var searchPath = "";
-        searchPath += CombinePaths(data.GetString("DistFolder"), "Cake.igloo15.ChangelogGenerator", "Release", "netstandard2.0")+"/*.dll;";
-        searchPath += CombinePaths(data.GetString("DistFolder"), "Cake.igloo15.Helper", "Release", "netstandard2.0")+"/*.dll;";
-        searchPath += CombinePaths(data.GetString("DistFolder"), "Cake.igloo15.MarkdownApi", "Release", "netstandard2.0")+"/*.dll;";
-        searchPath += CombinePaths(data.GetString("DistFolder"), "Cake.igloo15.MarkdownDocument", "Release", "netstandard2.0")+"/*.dll";
-        GenerateMarkdownApi(searchPath, "./docs/api");
-    })
+    .IsDependentOn("Markdown-Generate-Api")
     .CompleteTask();
 
 Task("Push")
