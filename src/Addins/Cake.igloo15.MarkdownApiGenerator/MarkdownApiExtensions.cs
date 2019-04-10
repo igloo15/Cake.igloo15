@@ -1,6 +1,7 @@
 using System.Text;
 using System;
 using System.Linq;
+using System.IO;
 using Cake.Core;
 using Cake.Core.Annotations;
 using Cake.Core.IO;
@@ -28,7 +29,7 @@ namespace Cake.igloo15.MarkdownApi
         public static void GenerateMarkdownApi(this ICakeContext context, string searchPath, string outputPath, ITheme theme = null)
         {
             var factory = new LoggerFactory().AddConsole();
-            
+
             var project = MarkdownApiGenerator.GenerateProject(searchPath, "", factory);
             theme = theme ?? new DefaultTheme(new DefaultOptions{
                 BuildNamespacePages = true,
@@ -82,7 +83,7 @@ namespace Cake.igloo15.MarkdownApi
             StringBuilder sb = new StringBuilder();
             foreach(var folder in allowedFolders)
             {
-                sb.Append(folder.FullPath).Append("/*.dll").Append(";");
+                sb.Append(System.IO.Path.Combine(folder.FullPath, "*.dll")).Append(";");
             }
 
             return sb.ToString();
