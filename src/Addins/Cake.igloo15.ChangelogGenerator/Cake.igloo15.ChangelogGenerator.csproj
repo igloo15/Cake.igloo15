@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+    <BaseOutputPath>$(MSBuildProjectFullPath)\..\..\..\..\dist\$(MSBuildProjectName)</BaseOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>$(Version)</PackageVersion>
+    <PackageId>$(MSBuildProjectName)</PackageId>
+    <Authors>igloo15</Authors>
+    <Description>A Cake addin used to call the changelog commands to generate a config or create a changelog file</Description>
+    <PackageTags>Cake Build Addins Changelog Extensions</PackageTags>
+    <PackageProjectUrl>https://github.com/igloo15/Cake.igloo15</PackageProjectUrl>
+    <PackageIconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
+    <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Cake.Core" Version="0.32.1" PrivateAssets="All"/>
+    <PackageReference Include="igloo15.ChangelogGenerator.Core" Version="0.2.0-dev0014"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(OutputPath)\publish\*.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </Content>
+    <Content Include="$(OutputPath)\publish\runtimes\win-x64\native\*.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </Content>
+    <Content Include="$(OutputPath)\publish\runtimes\linux-x64\native\*.so">
+      <Pack>true</Pack>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </Content>
+  </ItemGroup>
+</Project>

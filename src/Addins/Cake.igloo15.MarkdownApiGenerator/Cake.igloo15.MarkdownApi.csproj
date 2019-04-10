@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>$(MSBuildProjectName)</RootNamespace>
+    <BaseOutputPath>$(MSBuildProjectFullPath)\..\..\..\..\dist\$(MSBuildProjectName)</BaseOutputPath>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <PackageVersion>$(Version)</PackageVersion>
+    <PackageId>$(MSBuildProjectName)</PackageId>
+    <Authors>igloo15</Authors>
+    <Description>An addin for cake scripts that provides various markdown functions</Description>
+    <PackageTags>Cake Build Addins MarkdownApi Extensions</PackageTags>
+    <PackageProjectUrl>https://github.com/igloo15/Cake.igloo15</PackageProjectUrl>
+    <PackageIconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</PackageIconUrl>
+    <RepositoryUrl>$(PackageProjectUrl).git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Cake.Core" Version="0.32.1" PrivateAssets="All"/>
+    <PackageReference Include="igloo15.MarkdownApi.Core" Version="0.5.0-dev0004"/>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(OutputPath)\publish\*.dll">
+      <Pack>true</Pack>
+      <PackagePath>lib\$(TargetFramework)</PackagePath>
+    </Content>
+  </ItemGroup>
+</Project>

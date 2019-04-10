@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Cake.igloo15.Scripts.Markdown</id>
+        <version>$version$</version>
+        <authors>igloo15</authors>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>A set of cake scripts used as a basis for cake projects</description>
+        <iconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</iconUrl>
+        <license type="expression">MIT</license>
+    </metadata>
+    <files>
+        <file src="..\..\..\dist\Scripts\Markdown\*.cake" target="content" />
+    </files>
+</package>

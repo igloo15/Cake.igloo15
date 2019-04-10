@@ -1,0 +1,12 @@
+
+# branches to build
+branches:
+  # whitelist
+  only:
+    - master
+    - develop
+
+image: Visual Studio 2017
+
+build_script:
+- ps: .\build.ps1 -Target Deploy
