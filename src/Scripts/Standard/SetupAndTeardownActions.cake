@@ -6,16 +6,16 @@ Setup((c) => {
 });
 
 Teardown((c) => {
-    var data = c.GetData<ProjectData>();
+    var data = c.Data.Get<ProjectData>();
     InvokeTeardown(data);
 });
 
 TaskSetup((c) => {
-    var data = c.GetData<ProjectData>();
+    var data = c.Data.Get<ProjectData>();
     InvokeTaskSetup(data);
 });
 
 TaskTeardown((c) => {
-    var data = c.GetData<ProjectData>();
+    var data = c.Data.Get<ProjectData>();
     InvokeTaskTeardown(data);
 });
