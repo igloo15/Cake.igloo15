@@ -15,11 +15,23 @@ namespace Cake.igloo15.Helper
         /// A quick error function that will invoke errors using the event
         /// </summary>
         /// <param name="builder">The CakeTaskBuilder being extended</param>
-        public static void QuickError(this CakeTaskBuilder builder)
+        /// <param name="continueOnError">Continue On error allows you to continue building if you don't want to report</param>
+        public static void QuickError(this CakeTaskBuilder builder, bool continueOnError = false)
         {
-            builder.ReportError((exception) => {
-                _exceptionEvent?.Invoke(builder.Task.Name, exception);
-            });
+            if(continueOnError)
+            {
+                builder.ReportError((exception) => {
+                    _exceptionEvent?.Invoke(builder.Task.Name, exception);
+                });
+            } 
+            else 
+            {
+                builder.OnError((exception) => {
+                    _exceptionEvent?.Invoke(builder.Task.Name, exception);
+                    throw exception;
+                });
+            }
+            
         }
 
         /// <summary>
