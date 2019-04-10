@@ -51,6 +51,8 @@ namespace Cake.igloo15.MarkdownApi
                 ),
                 outputPath
             );
+
+            factory.Dispose();
         }
 
         /// <summary>
