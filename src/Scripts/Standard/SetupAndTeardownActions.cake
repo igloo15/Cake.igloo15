@@ -5,14 +5,17 @@ Setup((c) => {
     Information("Finished setting up ProjectData");
 });
 
-Teardown<ProjectData>((c, data) => {
+Teardown((c) => {
+    var data = c.GetData<ProjectData>();
     InvokeTeardown(data);
 });
 
-TaskSetup<ProjectData>((c, data) => {
+TaskSetup((c) => {
+    var data = c.GetData<ProjectData>();
     InvokeTaskSetup(data);
 });
 
-TaskTeardown<ProjectData>((c, data) => {
+TaskTeardown((c) => {
+    var data = c.GetData<ProjectData>();
     InvokeTaskTeardown(data);
 });
