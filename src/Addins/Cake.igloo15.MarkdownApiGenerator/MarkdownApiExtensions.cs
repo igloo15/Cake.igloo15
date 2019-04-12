@@ -5,10 +5,10 @@ using System.IO;
 using Cake.Core;
 using Cake.Core.Annotations;
 using Cake.Core.IO;
-using Igloo15.MarkdownApi.Core;
-using Igloo15.MarkdownApi.Core.Interfaces;
-using Igloo15.MarkdownApi.Core.Themes;
-using Igloo15.MarkdownApi.Core.Themes.Default;
+using igloo15.MarkdownApi.Core;
+using igloo15.MarkdownApi.Core.Interfaces;
+using igloo15.MarkdownApi.Core.Themes;
+using igloo15.MarkdownApi.Core.Themes.Default;
 using Microsoft.Extensions.Logging;
 
 namespace Cake.igloo15.MarkdownApi
@@ -30,7 +30,7 @@ namespace Cake.igloo15.MarkdownApi
         {
             var factory = new LoggerFactory().AddConsole();
 
-            var project = MarkdownApiGenerator.GenerateProject(searchPath, "", factory);
+            var project = MarkdownApiGenerator.GenerateProject(searchPath, factory);
             theme = theme ?? new DefaultTheme(new DefaultOptions{
                 BuildNamespacePages = true,
                 BuildTypePages = true,
@@ -66,29 +66,6 @@ namespace Cake.igloo15.MarkdownApi
         public static void GenerateMarkdownApi(this ICakeContext context, string searchPath, string outputPath, DefaultOptions options)
         {
             context.GenerateMarkdownApi(searchPath, outputPath, new DefaultTheme(options));
-        }
-
-        /// <summary>
-        /// Create the dll search area based on root folder
-        /// </summary>
-        /// <param name="context">The ICakeContext</param>
-        /// <param name="rootFolder">The root folder to search under</param>
-        /// <param name="filter">Filter found folders</param>
-        /// <returns>The create search area</returns>
-        [CakeMethodAlias]
-        public static string CreateSearchArea(this ICakeContext context, string rootFolder, Func<DirectoryPath, bool> filter = null)
-        {
-            var folders = context.Globber.GetDirectories(rootFolder+"/**/*");
-
-            var allowedFolders = filter != null ? folders.Where(f => filter(f)) : folders;
-
-            StringBuilder sb = new StringBuilder();
-            foreach(var folder in allowedFolders)
-            {
-                sb.Append(System.IO.Path.Combine(folder.FullPath, "*.dll")).Append(";");
-            }
-
-            return sb.ToString();
         }
     }
 }
