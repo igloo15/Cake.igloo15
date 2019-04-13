@@ -21,7 +21,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Cake.Core" Version="0.32.1" PrivateAssets="All"/>
-    <PackageReference Include="igloo15.ChangelogGenerator.Core" Version="0.2.0-dev0015"/>
+    <PackageReference Include="igloo15.ChangelogGenerator.Core" Version="0.2.0-dev0017"/>
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(OutputPath)\publish\*.dll">
