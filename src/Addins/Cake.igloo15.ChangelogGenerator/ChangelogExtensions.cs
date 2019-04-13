@@ -32,7 +32,7 @@ namespace Cake.igloo15.ChangelogGenerator
         {
             ChangelogCore core = new ChangelogCore();
 
-            core.GenerateChangelog(new string[]{});
+            core.GenerateChangelog();
         }
 
         /// <summary>

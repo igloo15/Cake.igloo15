@@ -1,11 +1,8 @@
 
-
+ArgumentOrEnvironmentVariable<string>("Markdown-Generator-Filter", "./dist/**/publish/*.dll");
 
 Task("Markdown-Generate-Api")
     .Does<ProjectData>((data) => {
-        var searchArea = CreateSearchArea(data.GetString("DistFolder"), (dir) => {
-            return !dir.FullPath.Contains("publish");
-        });
-        GenerateMarkdownApi(searchArea, CombinePaths(data.GetString("DocsFolder"), "Api"));
+        GenerateMarkdownApi(data.GetString("Markdown-Generator-Filter"), CombinePaths(data.GetString("DocsFolder"), "Api"));
     })
     .CompleteTask();
