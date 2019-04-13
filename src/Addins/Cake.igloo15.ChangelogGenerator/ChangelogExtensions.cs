@@ -36,7 +36,7 @@ namespace Cake.igloo15.ChangelogGenerator
         }
 
         /// <summary>
-        /// Generate a changelog using the local changelog.json configuration file
+        /// Generate a changelog using the local changelog.json configuration file but overrided with the given next version
         /// </summary>
         /// <param name="context">The Cake Context</param>
         /// <param name="nextVersion">The next version for the unreleased changelog items</param>
@@ -49,7 +49,7 @@ namespace Cake.igloo15.ChangelogGenerator
         }
 
         /// <summary>
-        /// Generate a changelog using the local changelog.json configuration file
+        /// Generate a test changelog using the local changelog.json configuration file but optionally override with next version
         /// </summary>
         /// <param name="context">The Cake Context</param>
         /// <param name="nextVersion">The next version for the unreleased changelog items optional</param>

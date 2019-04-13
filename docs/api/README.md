@@ -10,6 +10,8 @@
 
 - [`ArgumentExtensions`](./Cake/igloo15/Helper/ArgumentExtensions.md)
 	- Extensions to allow for generic arguments or environments
+- [`ArgumentValue`](./Cake/igloo15/Helper/ArgumentValue.md)
+	- An internal ArgumentValue created from the ArgumentOrEnvironmentValue extension
 - [`ErrorExtensions`](./Cake/igloo15/Helper/ErrorExtensions.md)
 	- Extensions used for Errors
 - [`EventExtensions`](./Cake/igloo15/Helper/EventExtensions.md)

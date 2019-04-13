@@ -11,7 +11,8 @@ Extensions to allow for generic arguments or environments
 
 | Return | Name | Summary | 
 | --- | --- | --- | 
-| [T](./ArgumentExtensions.md) | ArgumentOrEnvironmentVariable ( [`ICakeContext`](./ArgumentExtensions.md) context, [`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String) name, [`T`](./ArgumentExtensions.md) defaultValue, [`Boolean`](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean) addToGlobal, [`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String) prefix ) |  | 
-| [Dictionary](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2)\<[String](https://docs.microsoft.com/en-us/dotnet/api/System.String), [Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object)> | GlobalArguments ( [`ICakeContext`](./ArgumentExtensions.md) context ) | Global Arguments properties this property contains all the arguments defined using ArgumentOrEnvironmentVariable | 
+| [T](./ArgumentExtensions.md) | ArgumentOrEnvironmentVariable ( [`ICakeContext`](./ArgumentExtensions.md) context, [`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String) name, [`T`](./ArgumentExtensions.md) defaultValue, [`Boolean`](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean) isPrivate, [`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String) prefix ) |  | 
+| [Dictionary](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2)\<[String](https://docs.microsoft.com/en-us/dotnet/api/System.String), [ArgumentValue](./ArgumentValue.md)> | GlobalArguments ( [`ICakeContext`](./ArgumentExtensions.md) context ) | Global Arguments properties this property contains all the arguments defined using ArgumentOrEnvironmentVariable | 
+| void | PrintArguments ( [`ICakeContext`](./ArgumentExtensions.md) context ) | Print all arguments except private ones | 
 
 

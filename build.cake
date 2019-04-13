@@ -8,7 +8,7 @@ var target = Argument<string>("target", "Default");
 
 AddSetup((d) => {
     d.SetPrivateProperty("NuGetApiKey", EnvironmentVariable("apikey"));
-    d["Markdown-Generator-Filter"] = "./dist/**/publish/Cake*.dll";
+    d["Markdown-Generator-Filter"] = "./dist/**/publish/Cake.igloo15*.dll";
 });
 
 AddTeardown((d) => {

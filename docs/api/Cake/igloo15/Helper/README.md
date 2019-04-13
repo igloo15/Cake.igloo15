@@ -4,6 +4,8 @@
 
 - [`ArgumentExtensions`](./ArgumentExtensions.md)
 	- Extensions to allow for generic arguments or environments
+- [`ArgumentValue`](./ArgumentValue.md)
+	- An internal ArgumentValue created from the ArgumentOrEnvironmentValue extension
 - [`ErrorExtensions`](./ErrorExtensions.md)
 	- Extensions used for Errors
 - [`EventExtensions`](./EventExtensions.md)
