@@ -1,6 +1,6 @@
 #addin "nuget:?package=Cake.igloo15.Helper&version=###VERSION###"
 
-var nugetApiKey = ArgumentOrEnvironmentVariable<string>("NuGetApiKey", "", false);
+ArgumentOrEnvironmentVariable<string>("NuGetApiKey", "", true);
 ArgumentOrEnvironmentVariable<string>("NuGetSource", "https://api.nuget.org/v3/index.json");
 
 Task("NuGet-Setup")
@@ -15,9 +15,6 @@ Task("NuGet-Setup")
         var settings = new GlobberSettings {
             Predicate = excludeFolders
         };
-
-        if(!String.IsNullOrEmpty(nugetApiKey))
-            data.SetPrivateProperty("NuGetApiKey", nugetApiKey);
 
         data["NuGetGlobSettings"] = settings;
     })
