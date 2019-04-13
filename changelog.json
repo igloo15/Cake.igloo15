@@ -1,16 +1,64 @@
 {
-  "Categories": [],
-  "Links": [],
-  "VersionFilters": [],
+  "$schema": "https://raw.githubusercontent.com/igloo15/ChangelogGenerator/develop/src/ChangelogGenerator.Core/changelog.schema.json",
+  "Categories": [
+    {
+      "Filter": {
+        "Keys": [ "#Summary" ]
+      },
+      "DisplayName": "",
+      "IsSummary": true
+    },
+    {
+      "Filter": {
+        "Keys": [ "#Commits" ]
+      },
+      "DisplayName": "Other Commits",
+      "IsDefault": true
+    },
+    {
+      "Filter": {
+        "Keys": [ "#Add", "#Added" ]
+      },
+      "DisplayName": "Add"
+    },
+    {
+      "Filter": {
+        "Keys": [ "#Change", "#Changes" ]
+      },
+      "DisplayName": "Changes",
+      "IsSummary": false
+    },
+    {
+      "Filter": {
+        "Keys": [ "#FIXED", "#FIX" ]
+      },
+      "DisplayName": "Fixed"
+    }
+  ],
+  "Links": [
+    {
+      "Filter": {
+        "Keys": [ "#issue-" ],
+        "RemoveTokens": [ "#issue-" ],
+        "RemoveAllKey":  false
+      },      
+      "UrlTemplate": "https://github.com/igloo15/ChangelogGenerator/issues/{LinkCleanKey}"
+    }
+  ],
+  "VersionFilter": {
+    "Keys":[ "v" ]
+  },
   "Templates": {
     "TitleTemplate": "# Changelog",
     "VersionTemplate": "## {Version}",
     "CategoryTemplate": "### {Category}",
     "IssueTemplate": "* {Message} {Links}",
     "LinkTemplate": "[{LinkCleanKey}]({Url})",
-    "NoIssuesTemplate": " N/A ",
+    "NoIssueTemplate": " N/A ",
+    "EndCategoryTemplate": "\n",
     "EndVersionTemplate": "\n",
-    "EndCategoryTemplate": "\n"
+    "EndChangelogTemplate": "",
+    "SummarySentenceTemplate": "{Message} "
   },
   "ChangelogLocation": "./CHANGELOG.md",
   "GitRepoLocation": ".",
