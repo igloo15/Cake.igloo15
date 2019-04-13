@@ -1,6 +1,9 @@
 # Changelog
 ## Unreleased
 ### Changes
+*  Update changelog generator to latest version
+*  Update Api Documentation
+*  Update changelog config file
 *  update to new changelog generator
 *  update to latest markdown generator tool
 
@@ -97,6 +100,7 @@
 ## v0.1.0
 ### Other Commits
 * Initial Commits
+
 
 
 
