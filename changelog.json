@@ -30,7 +30,7 @@
     },
     {
       "Filter": {
-        "Keys": [ "#FIXED", "#FIX" ]
+        "Keys": [ "#FIXED", "#FIX", "#FIXES" ]
       },
       "DisplayName": "Fixed"
     }

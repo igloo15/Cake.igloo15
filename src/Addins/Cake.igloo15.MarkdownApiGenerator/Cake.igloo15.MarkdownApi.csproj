@@ -21,7 +21,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Cake.Core" Version="0.32.1" PrivateAssets="All"/>
-    <PackageReference Include="igloo15.MarkdownApi.Core" Version="1.0.0"/>
+    <PackageReference Include="igloo15.MarkdownApi.Core" Version="1.0.1"/>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0"/>
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0"/>
   </ItemGroup>

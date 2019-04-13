@@ -6,8 +6,15 @@
 
 
 ### Changes
+*  updated documentation
+*  only master branch will not be built on appveyor
 *  updated NuGet Scripts to better handle private arguments like NuGetApiKey
 *  updated build scripts to latest version
+
+
+### Fixed
+*  comments in changelog extensions fixed
+*  changed markdown filter to be more specific
 
 
 
