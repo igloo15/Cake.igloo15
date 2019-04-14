@@ -1,5 +1,7 @@
 #addin "Cake.Incubator&version=3.1.0"
 
+// #l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=1.2.0-dev0006"
+
 #l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=1.1.0"
 
 

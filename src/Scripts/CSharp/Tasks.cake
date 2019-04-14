@@ -47,14 +47,14 @@ Task("CSharp-NetCore-Publish-All")
 Task("CSharp-NetCore-Pack-All")
     .IsDependentOn("CSharp-NetCore-Publish-All")
     .Does<ProjectData>(data => {
-        var buildSettings = data.GetProperty<DotNetCoreMSBuildSettings>("MSBuildSettings");
-        var solutionFiles = GetFiles(System.IO.Path.Combine(data["SrcFolder"].ToString(), "**","*.sln"));
+        var buildSettings = data.Get<DotNetCoreMSBuildSettings>("MSBuildSettings");
+        var solutionFiles = GetFiles(System.IO.Path.Combine(data.GetStr("SrcFolder"), "**","*.sln"));
         foreach(var solution in solutionFiles)
         {
             DotNetCorePack(solution.FullPath, new DotNetCorePackSettings {
                 NoBuild = true,
                 Configuration = "Release",
-                OutputDirectory = data["PackagesLocal"].ToString(),
+                OutputDirectory = data.GetStr("PackagesLocal"),
                 MSBuildSettings = buildSettings
             });
         }
