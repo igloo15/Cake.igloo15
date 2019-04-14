@@ -1,16 +1,10 @@
-#addin "Cake.Incubator&version=3.1.0"
 
-// #l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=1.2.0-dev0006"
-
-#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=1.1.0"
-
-
+#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=2.0.0"
 
 var target = Argument<string>("target", "Default");
 
 AddSetup((d) => {
-    d.SetPrivateProperty("NuGetApiKey", EnvironmentVariable("apikey"));
-    d["Markdown-Generator-Filter"] = "./dist/**/publish/Cake.igloo15*.dll";
+    d.Set("Markdown-Generator-Filter", "./dist/**/publish/Cake.igloo15*.dll");
 });
 
 AddTeardown((d) => {
@@ -22,12 +16,12 @@ Task("Update-Settings-With-Version")
     .IsDependentOn("Copy-Folder")
 	.Does<ProjectData>((data) => {
 
-        Information($"Updating MSBuild with Version {data.Version.LegacySemVerPadded}");
+        Information($"Updating MSBuild with Version {data.ProjectVersion.LegacySemVerPadded}");
 
         if(AppVeyor.IsRunningOnAppVeyor)
-			AppVeyor.UpdateBuildVersion(data.Version.LegacySemVerPadded);
+			AppVeyor.UpdateBuildVersion(data.ProjectVersion.LegacySemVerPadded);
 
-        ReplaceKey("###VERSION###", data.Version.LegacySemVerPadded, "./dist/Scripts/**/*.cake");
+        ReplaceKey("###VERSION###", data.ProjectVersion.LegacySemVerPadded, "./dist/Scripts/**/*.cake");
 	})
     .CompleteTask();
 
@@ -41,10 +35,7 @@ Task("Copy-Folder")
 
 Task("Pack")
     .IsDependentOn("Update-Settings-With-Version")
-    .IsDependentOn("CSharp-NetCore-Pack-All")
-    .IsDependentOn("NuGet-Package")
-    .IsDependentOn("Changelog-Generate")
-    .IsDependentOn("Markdown-Generate-Api")
+    .IsDependentOn("CSharp-Bundle-Pack-All")
     .CompleteTask();
 
 Task("Push")

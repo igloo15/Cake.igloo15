@@ -1,4 +1,27 @@
 # Changelog
+## v2.0.1
+### Summary
+
+
+### Add
+*  N/A 
+
+
+### Changes
+*  Update Readme with more information
+*  update packages with links to changelog
+
+
+### Fixed
+*  N/A 
+
+
+### Other Commits
+*  N/A 
+
+
+
+
 ## v2.0.0
 ### Summary
 
@@ -9,6 +32,7 @@
 
 
 ### Changes
+*  updated documentation
 *  continue to update tasks to match ProjectData changes
 *  Update all Scripts files to new ProjectData functionality
 *  update to latest changelog generator
@@ -26,7 +50,7 @@
 
 
 ### Other Commits
-*  N/A 
+* Merge branch 'develop'
 
 
 
