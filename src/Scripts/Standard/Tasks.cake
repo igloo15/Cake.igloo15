@@ -26,7 +26,7 @@ Task("Standard-Update-Version")
         Information("GitVersion:");
         Information(result.Dump());
 
-        data.Version = result;
+        data.ProjectVersion = result;
     })
     .CompleteTask();
 

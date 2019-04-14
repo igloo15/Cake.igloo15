@@ -25,13 +25,13 @@ Task("NuGet-Package")
     .Does<ProjectData>((data) => {
         
         var nuspecSearchPath = System.IO.Path.Combine(data["SrcFolder"].ToString(), "**","*.nuspec");
-        var files = GetFiles(nuspecSearchPath, data.GetProperty<GlobberSettings>("NuGetGlobSettings"));
+        var files = GetFiles(nuspecSearchPath, data.Get<GlobberSettings>("NuGetGlobSettings"));
 
         foreach(var file in files)
         {
             NuGetPack(file, new NuGetPackSettings {
-                Version = data.Version.NuGetVersion,
-                OutputDirectory = data.GetString("PackagesLocal")
+                Version = data.ProjectVersion.NuGetVersion,
+                OutputDirectory = data.GetStr("PackagesLocal")
             });
         }
     })
@@ -43,14 +43,14 @@ Task("NuGet-Push")
     .Does<ProjectData>((data) => {
         
 
-        var nuspecSearchPath = System.IO.Path.Combine(data["PackagesLocal"].ToString(), "**","*.nupkg");
-        var files = GetFiles(nuspecSearchPath, data.GetProperty<GlobberSettings>("NuGetGlobSettings"));
+        var nuspecSearchPath = System.IO.Path.Combine(data.GetStr("PackagesLocal"), "**","*.nupkg");
+        var files = GetFiles(nuspecSearchPath, data.Get<GlobberSettings>("NuGetGlobSettings"));
 
         foreach(var file in files)
         {
             NuGetPush(file, new NuGetPushSettings {
-                ApiKey = data["NuGetApiKey"].ToString(),
-                Source = data["NuGetSource"].ToString()
+                ApiKey = data.GetStr("NuGetApiKey"),
+                Source = data.GetStr("NuGetSource")
             });
         }
     })

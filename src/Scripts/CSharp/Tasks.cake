@@ -4,10 +4,10 @@ Task("CSharp-NetCore-Setup")
     .Does<ProjectData>(data => {
 
         var buildSettings = new DotNetCoreMSBuildSettings()
-                            .WithProperty("Version", data.Version.LegacySemVerPadded)
-                            .WithProperty("AssemblyVersion", data.Version.MajorMinorPatch)
-                            .WithProperty("FileVersion",  data.Version.MajorMinorPatch)
-                            .WithProperty("AssemblyInformationalVersion", data.Version.InformationalVersion);
+                            .WithProperty("Version", data.ProjectVersion.LegacySemVerPadded)
+                            .WithProperty("AssemblyVersion", data.ProjectVersion.MajorMinorPatch)
+                            .WithProperty("FileVersion",  data.ProjectVersion.MajorMinorPatch)
+                            .WithProperty("AssemblyInformationalVersion", data.ProjectVersion.InformationalVersion);
 
         data["MSBuildSettings"] = buildSettings;
     })
@@ -16,8 +16,8 @@ Task("CSharp-NetCore-Setup")
 Task("CSharp-NetCore-Build-All")
     .IsDependentOn("CSharp-NetCore-Setup")
     .Does<ProjectData>(data => {
-        var buildSettings = data.GetProperty<DotNetCoreMSBuildSettings>("MSBuildSettings");
-        var solutionFiles = GetFiles(System.IO.Path.Combine(data["SrcFolder"].ToString(), "**","*.sln"));
+        var buildSettings = data.Get<DotNetCoreMSBuildSettings>("MSBuildSettings");
+        var solutionFiles = GetFiles(System.IO.Path.Combine(data.GetStr("SrcFolder"), "**","*.sln"));
         foreach(var solution in solutionFiles)
         {
             DotNetCoreBuild(solution.FullPath, new DotNetCoreBuildSettings {
@@ -31,8 +31,8 @@ Task("CSharp-NetCore-Build-All")
 Task("CSharp-NetCore-Publish-All")
     .IsDependentOn("CSharp-NetCore-Setup")
     .Does<ProjectData>(data => {
-        var buildSettings = data.GetProperty<DotNetCoreMSBuildSettings>("MSBuildSettings");
-        var solutionFiles = GetFiles(System.IO.Path.Combine(data["SrcFolder"].ToString(), "**","*.sln"));
+        var buildSettings = data.Get<DotNetCoreMSBuildSettings>("MSBuildSettings");
+        var solutionFiles = GetFiles(System.IO.Path.Combine(data.GetStr("SrcFolder"), "**","*.sln"));
         foreach(var solution in solutionFiles)
         {
             DotNetCorePublish(solution.FullPath, new DotNetCorePublishSettings {
