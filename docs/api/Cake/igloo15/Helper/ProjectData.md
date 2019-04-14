@@ -11,7 +11,7 @@ A generic class used to store project data
 
 | Name | Summary | 
 | --- | --- | 
-| ProjectData ( [`ICakeContext`](./ProjectData.md) context, [`Dictionary`](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2)\<[`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String), [`ArgumentValue`](./ArgumentValue.md)> arguments ) |  | 
+| ProjectData ( [`ICakeContext`](./ProjectData.md) context, [`Dictionary`](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.Dictionary-2)\<[`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String), [`ArgumentValue`](./ArgumentValue.md)> arguments ) | The Project Data Constructor | 
 
 
 ## Properties
@@ -30,7 +30,7 @@ A generic class used to store project data
 | --- | --- | --- | 
 | [Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean) | ContainsKey ( [`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String) key ) | Checks if key is in project data | 
 | [T](./ProjectData.md) | Get ( [`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String) key ) | Returns a value of the specified type | 
-| [Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object) | Get ( [`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String) key ) | Returns a value of the specified type | 
+| [Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object) | Get ( [`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String) key ) | Gets the object representation of data stored in ProjectData | 
 | [T](./ProjectData.md) | GetArg ( [`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String) key ) | Gets an argument defined via the constructor | 
 | [ArgumentValue](./ArgumentValue.md) | GetArgValue ( [`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String) key ) | Returns the ArgumentValue | 
 | [String](https://docs.microsoft.com/en-us/dotnet/api/System.String) | GetStr ( [`String`](https://docs.microsoft.com/en-us/dotnet/api/System.String) key ) | Short hand for getting a string | 
