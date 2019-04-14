@@ -6,7 +6,7 @@
 #l "nuget:?package=Cake.igloo15.Scripts.Markdown&version=###VERSION###"
 
 Task("CSharp-Bundle-Pack-All")
-    .IsDependentOn("Update-Settings-With-Version")
+    .IsDependentOn("Standard-All")
     .IsDependentOn("CSharp-NetCore-Pack-All")
     .IsDependentOn("NuGet-Package")
     .IsDependentOn("Changelog-Generate")
