@@ -1,5 +1,44 @@
 # Changelog
-## Unreleased
+## v2.0.0
+### Summary
+
+
+### Add
+*  introduced new ArgValue class to handle determining if an argument is the default value or not as well as if it should be marked private
+*  many new methods added to ProjectData to handle a multitude of ways of using it
+
+
+### Changes
+*  continue to update tasks to match ProjectData changes
+*  Update all Scripts files to new ProjectData functionality
+*  update to latest changelog generator
+*  updated markdown generator to latest version
+*  modified changelog config to include additional keys
+*  updated documentation
+*  only master branch will not be built on appveyor
+*  updated NuGet Scripts to better handle private arguments like NuGetApiKey
+*  updated build scripts to latest version
+
+
+### Fixed
+*  comments in changelog extensions fixed
+*  changed markdown filter to be more specific
+
+
+### Other Commits
+*  N/A 
+
+
+
+
+## v1.1.0
+### Summary
+
+
+### Add
+*  N/A 
+
+
 ### Changes
 *  Update changelog generator to latest version
 *  Update Api Documentation
@@ -8,13 +47,22 @@
 *  update to latest markdown generator tool
 
 
+### Fixed
+*  N/A 
+
+
 ### Other Commits
+* Merge branch 'develop'
+* Getting ready for final release
 * Merge branch 'master' into develop
 
 
 
 
 ## v1.0.0
+### Summary
+
+
 ### Add
 *  markdown is now part of csharp bundle
 *  logging added to markdown api documentation
@@ -98,6 +146,21 @@
 
 
 ## v0.1.0
+### Summary
+
+
+### Add
+*  N/A 
+
+
+### Changes
+*  N/A 
+
+
+### Fixed
+*  N/A 
+
+
 ### Other Commits
 * Initial Commits
 

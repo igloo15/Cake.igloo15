@@ -1,6 +1,6 @@
 #addin "nuget:?package=Cake.igloo15.Helper&version=###VERSION###"
 
-var nugetApiKey = ArgumentOrEnvironmentVariable<string>("NuGetApiKey", "", false);
+ArgumentOrEnvironmentVariable<string>("NuGetApiKey", "", true);
 ArgumentOrEnvironmentVariable<string>("NuGetSource", "https://api.nuget.org/v3/index.json");
 
 Task("NuGet-Setup")
@@ -16,9 +16,6 @@ Task("NuGet-Setup")
             Predicate = excludeFolders
         };
 
-        if(!String.IsNullOrEmpty(nugetApiKey))
-            data.SetPrivateProperty("NuGetApiKey", nugetApiKey);
-
         data["NuGetGlobSettings"] = settings;
     })
     .CompleteTask();
@@ -28,13 +25,13 @@ Task("NuGet-Package")
     .Does<ProjectData>((data) => {
         
         var nuspecSearchPath = System.IO.Path.Combine(data["SrcFolder"].ToString(), "**","*.nuspec");
-        var files = GetFiles(nuspecSearchPath, data.GetProperty<GlobberSettings>("NuGetGlobSettings"));
+        var files = GetFiles(nuspecSearchPath, data.Get<GlobberSettings>("NuGetGlobSettings"));
 
         foreach(var file in files)
         {
             NuGetPack(file, new NuGetPackSettings {
-                Version = data.Version.NuGetVersion,
-                OutputDirectory = data.GetString("PackagesLocal")
+                Version = data.ProjectVersion.NuGetVersion,
+                OutputDirectory = data.GetStr("PackagesLocal")
             });
         }
     })
@@ -46,14 +43,14 @@ Task("NuGet-Push")
     .Does<ProjectData>((data) => {
         
 
-        var nuspecSearchPath = System.IO.Path.Combine(data["PackagesLocal"].ToString(), "**","*.nupkg");
-        var files = GetFiles(nuspecSearchPath, data.GetProperty<GlobberSettings>("NuGetGlobSettings"));
+        var nuspecSearchPath = System.IO.Path.Combine(data.GetStr("PackagesLocal"), "**","*.nupkg");
+        var files = GetFiles(nuspecSearchPath, data.Get<GlobberSettings>("NuGetGlobSettings"));
 
         foreach(var file in files)
         {
             NuGetPush(file, new NuGetPushSettings {
-                ApiKey = data["NuGetApiKey"].ToString(),
-                Source = data["NuGetSource"].ToString()
+                ApiKey = data.GetStr("NuGetApiKey"),
+                Source = data.GetStr("NuGetSource")
             });
         }
     })

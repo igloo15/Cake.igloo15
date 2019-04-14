@@ -1,18 +1,16 @@
 #addin "Cake.Incubator&version=3.1.0"
 
-#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=1.0.0"
+// #l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=1.2.0-dev0006"
+
+#l "nuget:?package=Cake.igloo15.Scripts.Bundle.CSharp&version=1.1.0"
 
 
 
 var target = Argument<string>("target", "Default");
 
-string SolutionLocation = "./src/Addins/Cake.igloo15.Addins.sln";
-string PackagesLocation = "./packages.local";
-
 AddSetup((d) => {
-    d["MyItems"] = "Stuff";
     d.SetPrivateProperty("NuGetApiKey", EnvironmentVariable("apikey"));
-    d["Markdown-Generator-Filter"] = "./dist/**/publish/Cake*.dll";
+    d["Markdown-Generator-Filter"] = "./dist/**/publish/Cake.igloo15*.dll";
 });
 
 AddTeardown((d) => {

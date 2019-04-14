@@ -3,6 +3,6 @@ ArgumentOrEnvironmentVariable<string>("Markdown-Generator-Filter", "./dist/**/pu
 
 Task("Markdown-Generate-Api")
     .Does<ProjectData>((data) => {
-        GenerateMarkdownApi(data.GetString("Markdown-Generator-Filter"), CombinePaths(data.GetString("DocsFolder"), "Api"));
+        GenerateMarkdownApi(data.GetStr("Markdown-Generator-Filter"), CombinePaths(data.GetStr("DocsFolder"), "Api"));
     })
     .CompleteTask();
