@@ -6,6 +6,8 @@
 
 
 ### Changes
+*  updated markdown generator to latest version
+*  modified changelog config to include additional keys
 *  updated documentation
 *  only master branch will not be built on appveyor
 *  updated NuGet Scripts to better handle private arguments like NuGetApiKey
