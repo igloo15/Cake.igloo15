@@ -1,10 +1,54 @@
 # Changelog
+## v2.0.3
+### Summary
+
+
+### Add
+ N/A 
+
+
+### Changes
+*  Update to latest Markdown Api Library
+
+
+### Fixed
+ N/A 
+
+
+### Other Commits
+ N/A 
+
+
+
+
+## v2.0.2
+### Summary
+
+
+### Add
+ N/A 
+
+
+### Changes
+ N/A 
+
+
+### Fixed
+*  bundle script referencing wrong task
+
+
+### Other Commits
+* Merge branch 'develop'
+
+
+
+
 ## v2.0.1
 ### Summary
 
 
 ### Add
-*  N/A 
+ N/A 
 
 
 ### Changes
@@ -13,11 +57,12 @@
 
 
 ### Fixed
-*  N/A 
+ N/A 
 
 
 ### Other Commits
-*  N/A 
+* Merge branch 'develop'
+* update changelog
 
 
 
@@ -60,7 +105,7 @@
 
 
 ### Add
-*  N/A 
+ N/A 
 
 
 ### Changes
@@ -72,7 +117,7 @@
 
 
 ### Fixed
-*  N/A 
+ N/A 
 
 
 ### Other Commits
@@ -174,15 +219,15 @@
 
 
 ### Add
-*  N/A 
+ N/A 
 
 
 ### Changes
-*  N/A 
+ N/A 
 
 
 ### Fixed
-*  N/A 
+ N/A 
 
 
 ### Other Commits
