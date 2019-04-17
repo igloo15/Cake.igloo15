@@ -1,5 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/igloo15/ChangelogGenerator/develop/src/ChangelogGenerator.Core/changelog.schema.json",
+  "$schema": "https://raw.githubusercontent.com/igloo15/ChangelogGenerator/master/src/ChangelogGenerator.Core/changelog.schema.json",
   "Categories": [
     {
       "Filter": {
@@ -54,7 +54,7 @@
     "CategoryTemplate": "### {Category}",
     "IssueTemplate": "* {Message} {Links}",
     "LinkTemplate": "[{LinkCleanKey}]({Url})",
-    "NoIssueTemplate": " N/A ",
+    "NoIssuesTemplate": " N/A ",
     "EndCategoryTemplate": "\n",
     "EndVersionTemplate": "\n",
     "EndChangelogTemplate": "",
