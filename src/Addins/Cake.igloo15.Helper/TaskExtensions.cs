@@ -70,7 +70,7 @@ namespace Cake.igloo15.Helper
             if(context is ISetupContext setupContext)
             {
                 setupContext.TasksToExecute.Select(c => c as CakeTask).Execute(t => {
-                    t.AddDelayedAction(() => {
+                    t.AddDelayedAction(delayContext => {
                         data.CurrentTask = t;
                     });
                 });
