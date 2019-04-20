@@ -1,4 +1,6 @@
 
+ArgumentOrEnvironmentVariable("Configuration", "Release");
+
 Task("CSharp-NetCore-Setup")
     .IsDependentOn("Standard-Update-Version")
     .Does<ProjectData>(data => {
@@ -21,7 +23,7 @@ Task("CSharp-NetCore-Build-All")
         foreach(var solution in solutionFiles)
         {
             DotNetCoreBuild(solution.FullPath, new DotNetCoreBuildSettings {
-                Configuration = "Release",
+                Configuration = data.GetStr("Configuration"),
                 MSBuildSettings = buildSettings
             });
         }
@@ -36,7 +38,7 @@ Task("CSharp-NetCore-Publish-All")
         foreach(var solution in solutionFiles)
         {
             DotNetCorePublish(solution.FullPath, new DotNetCorePublishSettings {
-                Configuration = "Release",
+                Configuration = data.GetStr("Configuration"),
                 MSBuildSettings = buildSettings
             });
         }
@@ -53,7 +55,7 @@ Task("CSharp-NetCore-Pack-All")
         {
             DotNetCorePack(solution.FullPath, new DotNetCorePackSettings {
                 NoBuild = true,
-                Configuration = "Release",
+                Configuration = data.GetStr("Configuration"),
                 OutputDirectory = data.GetStr("PackagesLocal"),
                 MSBuildSettings = buildSettings
             });

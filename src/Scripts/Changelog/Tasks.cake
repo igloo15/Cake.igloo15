@@ -1,9 +1,20 @@
 
+ArgumentOrEnvironmentVariable("next-version", "Unreleased");
 
 Task("Changelog-Generate")
     .IsDependentOn("Changelog-CreateConfig")
-    .Does(() => {
-        GenerateChangelog();
+    .Does<ProjectData>(data => {
+        var value = data.GetArgValue("next-version");
+
+        if(value.IsDefault)
+        {
+            GenerateChangelog();
+        }
+        else 
+        {
+            Information($"Using Next Version: {value.GetValue<string>()}");
+            GenerateChangelog(value.GetValue<string>());
+        }
     })
     .CompleteTask();
 
