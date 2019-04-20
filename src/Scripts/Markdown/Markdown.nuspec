@@ -5,7 +5,7 @@
         <version>$version$</version>
         <authors>igloo15</authors>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>A set of cake scripts used as a basis for cake projects</description>
+        <description>A set of cake scripts used to create tasks for Cake.igloo15.MarkdownDocument and Cake.igloo15.MarkdownApiGenerator Addins</description>
         <iconUrl>https://cdn.rawgit.com/cake-contrib/graphics/a5cf0f881c390650144b2243ae551d5b9f836196/png/cake-contrib-medium.png</iconUrl>
         <license type="expression">MIT</license>
     </metadata>
