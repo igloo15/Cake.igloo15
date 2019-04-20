@@ -1,5 +1,5 @@
 #tool "nuget:?package=GitVersion.CommandLine&version=4.0.0"
-#addin "Cake.Incubator&version=3.1.0"
+#addin "Cake.Incubator&version=5.0.1"
 
 #l Arguments.cake
 

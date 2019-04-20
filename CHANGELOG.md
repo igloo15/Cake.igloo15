@@ -1,18 +1,19 @@
 # Changelog
-## Unreleased
+## v2.1.0
 ### Summary
-
+This is a minor update to upgrade all cake scripts, addins, and other packages to use the latest 0.33.0 version of cake. It will also fix. 
 
 ### Add
- N/A 
+*  ability to define next version for changelog using NextVersion command line argument
+*  ability to change configuration for csharp building default is Release
 
 
 ### Changes
- N/A 
+*  update to version 0.33.0 version of Cake for all scripts
 
 
 ### Fixed
- N/A 
+*  bugs related to upgrading to 0.33.0 are fixed
 
 
 ### Other Commits
