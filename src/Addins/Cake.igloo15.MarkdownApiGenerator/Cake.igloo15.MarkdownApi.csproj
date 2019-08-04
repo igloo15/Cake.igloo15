@@ -21,7 +21,7 @@
     <PackageReleaseNotes>See $(PackageProjectUrl)/blob/master/CHANGELOG.md for release notes</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Cake.Core" Version="0.33.0" PrivateAssets="All"/>
+    <PackageReference Include="Cake.Core" Version="0.34.1" PrivateAssets="All"/>
     <PackageReference Include="igloo15.MarkdownApi.Core" Version="1.0.5"/>
     <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0"/>
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0"/>
