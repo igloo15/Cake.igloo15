@@ -1,4 +1,4 @@
-#addin "nuget:?package=Cake.igloo15.Helper&version=###VERSION###"
+#addin "nuget:?package=Cake.igloo15.Helper&version=###VERSION###&prerelease"
 
 ArgumentOrEnvironmentVariable<string>("NuGetApiKey", "", true);
 ArgumentOrEnvironmentVariable<string>("NuGetSource", "https://api.nuget.org/v3/index.json");

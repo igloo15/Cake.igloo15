@@ -1,4 +1,26 @@
 # Changelog
+## Unreleased
+### Summary
+
+
+### Add
+ N/A 
+
+
+### Changes
+*  update the nuget package descriptions for the cake scripts
+
+
+### Fixed
+ N/A 
+
+
+### Other Commits
+ N/A 
+
+
+
+
 ## v2.1.0
 ### Summary
 This is a minor update to upgrade all cake scripts, addins, and other packages to use the latest 0.33.0 version of cake. It will also fix. 
@@ -17,7 +39,8 @@ This is a minor update to upgrade all cake scripts, addins, and other packages t
 
 
 ### Other Commits
- N/A 
+* Merge branch 'develop'
+* changelog update
 
 
 

@@ -1,4 +1,4 @@
-#addin "nuget:?package=Cake.igloo15.Helper&version=###VERSION###"
+#addin "nuget:?package=Cake.igloo15.Helper&version=###VERSION###&prerelease"
 
 Setup((c) => {
     c.SetupProjectData();    

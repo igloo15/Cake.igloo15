@@ -1,6 +1,6 @@
 
-#addin "nuget:?package=Cake.igloo15.Helper&version=###VERSION###"
-#addin "nuget:?package=Cake.igloo15.MarkdownApi&version=###VERSION###"
-#addin "nuget:?package=Cake.igloo15.MarkdownDocument&version=###VERSION###"
+#addin "nuget:?package=Cake.igloo15.Helper&version=###VERSION###&prerelease"
+#addin "nuget:?package=Cake.igloo15.MarkdownApi&version=###VERSION###&prerelease"
+#addin "nuget:?package=Cake.igloo15.MarkdownDocument&version=###VERSION###&prerelease"
 
 #l Tasks.cake
