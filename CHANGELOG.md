@@ -8,7 +8,7 @@
 
 
 ### Changes
-*  update the nuget package descriptions for the cake scripts
+ N/A 
 
 
 ### Fixed
@@ -17,6 +17,29 @@
 
 ### Other Commits
  N/A 
+
+
+
+
+## v2.1.1
+### Summary
+
+
+### Add
+ N/A 
+
+
+### Changes
+*  update to latest cake version
+*  update the nuget package descriptions for the cake scripts
+
+
+### Fixed
+ N/A 
+
+
+### Other Commits
+* Merge branch 'develop'
 
 
 

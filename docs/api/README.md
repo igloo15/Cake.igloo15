@@ -32,4 +32,8 @@
 
 - [`MarkdownMethods`](./Cake/igloo15/MarkdownDocument/MarkdownMethods.md)
 	- Methods for generating a merged markdown file
+### [Cake.igloo15.WinScp](./Cake/igloo15/WinScp/README.md)
+
+- [`WinScpExtensions`](./Cake/igloo15/WinScp/WinScpExtensions.md)
+	- Extensions to use WinScp
 
