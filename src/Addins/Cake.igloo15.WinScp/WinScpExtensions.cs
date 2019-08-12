@@ -1,4 +1,5 @@
 ﻿using Cake.Core;
+using Cake.Core.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,6 +21,7 @@ namespace Cake.igloo15.WinScp
         /// <param name="localFolder">Full path to local directory.</param>
         /// <param name="removeFiles">When set to true, deletes obsolete files.</param>
         /// <returns>The ICake Context</returns>
+        [CakeMethodAlias]
         public static ICakeContext SyncronizeDirectories(this ICakeContext context,
             string url,
             string localFolder,
@@ -43,6 +45,7 @@ namespace Cake.igloo15.WinScp
         /// <param name="criteria">The criteria by which to determine if synchronization of a file is necessary defaults to time</param>
         /// <param name="transferOptions">The transfer options (https://winscp.net/eng/docs/library_transferoptions)</param>
         /// <returns>The ICake Context</returns>
+        [CakeMethodAlias]
         public static ICakeContext SyncronizeDirectories(this ICakeContext context,
             SessionOptions options,
             string localFolder,
@@ -67,6 +70,7 @@ namespace Cake.igloo15.WinScp
         /// <param name="remove">Remove local file after upload</param>
         /// <param name="transferOptions">The transfer options (https://winscp.net/eng/docs/library_transferoptions)</param>
         /// <returns>The ICakeContext</returns>
+        [CakeMethodAlias]
         public static ICakeContext PutFiles(this ICakeContext context,
             SessionOptions options,
             string localFolder,
@@ -85,6 +89,7 @@ namespace Cake.igloo15.WinScp
         /// <param name="options">Session Options (https://winscp.net/eng/docs/library_sessionoptions).</param>
         /// <param name="remoteFolder">Full path to remote directory.</param>
         /// <returns>The IEnumerable list of RemoteFileInfo (https://winscp.net/eng/docs/library_remotefileinfo)</returns>
+        [CakeMethodAlias]
         public static IEnumerable<RemoteFileInfo> GetFileList(this ICakeContext context,
             SessionOptions options,
             string remoteFolder)
@@ -102,6 +107,7 @@ namespace Cake.igloo15.WinScp
         /// <param name="remove">Remove remote file after download</param>
         /// <param name="transferOptions">The transfer options (https://winscp.net/eng/docs/library_transferoptions)</param>
         /// <returns>The ICakeContext</returns>
+        [CakeMethodAlias]
         public static ICakeContext GetFiles(this ICakeContext context,
             SessionOptions options,
             string remoteFolder,
@@ -127,6 +133,7 @@ namespace Cake.igloo15.WinScp
         /// <param name="criteria">The criteria by which to determine if synchronization of a file is necessary defaults to time</param>
         /// <param name="transferOptions">The transfer options (https://winscp.net/eng/docs/library_transferoptions)</param>
         /// <returns>The ICake Context</returns>
+        [CakeMethodAlias]
         public static IEnumerable<ComparisonDifference> CompareDirectories(this ICakeContext context,
             SessionOptions options,
             string localFolder,
