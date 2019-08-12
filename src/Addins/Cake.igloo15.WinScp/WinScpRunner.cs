@@ -183,14 +183,19 @@ namespace Cake.igloo15.WinScp
                 var result = session.CompareDirectories(mode, localFolder, remoteFolder, removeFiles, mirror, criteria, transferOptions) as IEnumerable<ComparisonDifference>;
                 if (logDifferences)
                 {
+                    if(result == null)
+                    {
+                        Logger.Information("Compare Result was Null");
+                        return result;
+                    }
                     Logger.Information(String.Format("|{0,16}|{1,10}|{2,20}|{3,20}|", "Action".PadRight(16), "Directory".PadRight(10), "Local File Name".PadRight(20), "Remote File Name".PadRight(20)));
                     foreach (var diff in result)
                     {
                         Logger.Information(String.Format("|{0,16}|{1,10}|{2,20}|{3,20}|",
-                            diff.Action.ToString().PadRight(16),
+                            diff.Action?.ToString().PadRight(16),
                             diff.IsDirectory.ToString().PadRight(10),
-                            diff.Local.FileName.PadRight(20),
-                            diff.Remote.FileName.PadRight(20)));
+                            diff.Local?.FileName?.PadRight(20),
+                            diff.Remote?.FileName?.PadRight(20)));
                     }
                 }
                 return result;
