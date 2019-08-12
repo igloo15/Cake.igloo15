@@ -22,7 +22,7 @@ namespace Cake.igloo15.WinScp
         /// <param name="removeFiles">When set to true, deletes obsolete files.</param>
         /// <returns>The ICake Context</returns>
         [CakeMethodAlias]
-        public static ICakeContext SyncronizeDirectories(this ICakeContext context,
+        public static ICakeContext SynchronizeDirectories(this ICakeContext context,
             string url,
             string localFolder,
             string remoteFolder,
@@ -46,7 +46,7 @@ namespace Cake.igloo15.WinScp
         /// <param name="transferOptions">The transfer options (https://winscp.net/eng/docs/library_transferoptions)</param>
         /// <returns>The ICake Context</returns>
         [CakeMethodAlias]
-        public static ICakeContext SyncronizeDirectories(this ICakeContext context,
+        public static ICakeContext SynchronizeDirectories(this ICakeContext context,
             SessionOptions options,
             string localFolder,
             string remoteFolder,
@@ -110,8 +110,8 @@ namespace Cake.igloo15.WinScp
         [CakeMethodAlias]
         public static ICakeContext GetFiles(this ICakeContext context,
             SessionOptions options,
-            string remoteFolder,
             string localFolder,
+            string remoteFolder,
             bool remove = false,
             TransferOptions transferOptions = null)
         {
