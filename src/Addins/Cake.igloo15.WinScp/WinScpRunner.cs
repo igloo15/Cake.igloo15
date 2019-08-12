@@ -192,10 +192,10 @@ namespace Cake.igloo15.WinScp
                     foreach (var diff in result)
                     {
                         Logger.Information(String.Format("|{0,16}|{1,10}|{2,20}|{3,20}|",
-                            diff.Action?.ToString().PadRight(16),
-                            diff.IsDirectory.ToString().PadRight(10),
-                            diff.Local?.FileName?.PadRight(20),
-                            diff.Remote?.FileName?.PadRight(20)));
+                            diff?.Action.ToString().PadRight(16),
+                            diff?.IsDirectory.ToString().PadRight(10),
+                            diff?.Local?.FileName?.PadRight(20),
+                            diff?.Remote?.FileName?.PadRight(20)));
                     }
                 }
                 return result;
