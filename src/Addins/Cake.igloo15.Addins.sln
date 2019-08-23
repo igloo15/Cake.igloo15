@@ -11,8 +11,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.igloo15.ChangelogGener
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.igloo15.MarkdownDocument", "Cake.igloo15.MarkdownDocument\Cake.igloo15.MarkdownDocument.csproj", "{F7446D15-F961-4A16-96E9-367B57C11FEE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cake.igloo15.WinScp", "Cake.igloo15.WinScp\Cake.igloo15.WinScp.csproj", "{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -71,18 +69,6 @@ Global
 		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Release|x64.Build.0 = Release|Any CPU
 		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Release|x86.ActiveCfg = Release|Any CPU
 		{F7446D15-F961-4A16-96E9-367B57C11FEE}.Release|x86.Build.0 = Release|Any CPU
-		{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}.Debug|x64.Build.0 = Debug|Any CPU
-		{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}.Debug|x86.Build.0 = Debug|Any CPU
-		{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}.Release|x64.ActiveCfg = Release|Any CPU
-		{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}.Release|x64.Build.0 = Release|Any CPU
-		{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}.Release|x86.ActiveCfg = Release|Any CPU
-		{63F323E3-FBB9-4559-A5F9-8B4EF8F18A98}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
